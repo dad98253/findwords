@@ -8,6 +8,7 @@ easily identified by a quick (human) scan of the final list.
 
 Usage:
 ./findwords ABCD |sort|uniq>in.txt
+
 comm -23 in.txt <(aspell list < in.txt)
 
 where "ABCD" is the string to be permuted
