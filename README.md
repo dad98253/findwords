@@ -14,7 +14,7 @@ comm -23 in.txt <(aspell list < in.txt)
 where "ABCD" is the string to be permuted
 
 in.txt is a temporary file used to save the raw permutations
-before they are passed through the spell checker. The com
+before they are passed through the spell checker. The comm
 command then compares the list of misspelled words to the
 original (raw) list and removes the words that are in common
 between the two lists. What remains should be a list of
