@@ -2,7 +2,8 @@
 // Name        : findwords.cpp
 // Author      : dad
 // Version     : Rev 0.0
-// Copyright   : dwtfywwi
+// Copyright   : (c)John Kuras 2025
+// License     : dwtfywwi
 // Description : find all word purmutations of a string
 //============================================================================
 // usage:
