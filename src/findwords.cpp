@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : findwords.cpp
 // Author      : dad
-// Version     :
+// Version     : Rev 0.0
 // Copyright   : dwtfywwi
 // Description : find all word purmutations of a string
 //============================================================================
