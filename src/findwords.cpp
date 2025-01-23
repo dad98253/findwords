@@ -32,6 +32,7 @@ int main( int argc, char **argv ) {
         static struct option long_options[] = {
             {"min-word-size",  required_argument, 0, 'm'},
 			{"help",  no_argument, 0, '?'},
+			{"version",  no_argument, 0, '?'},
             {0,         0,                 0,  0 }
         };
 
