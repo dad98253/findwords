@@ -35,6 +35,12 @@ if OK,
 if an error is encountered (or the ? option is specified)
 .SH BUGS
 No known bugs.
+.SH EXAMPLE
+.PP
+.\" Add any additional description here
+A common use for the program is to help with certain word puzzels. The following example will find the perturbations of the string "FFERO" and then pass the output through a spell checker to generate a list of possible English words:
+.PP
+\fBfindwords FFERO |sort|uniq>in.txt ; comm -23 in.txt <(aspell list < in.txt) 2>/dev/null\fR
 .SH AUTHOR
 John Kuras (w7og@yahoo.com)
 .SH "REPORTING BUGS"
