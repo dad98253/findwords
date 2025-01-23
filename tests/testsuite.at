@@ -1,0 +1,29 @@
+# Process with autom4te to create an -*- Autotest -*- test suite.
+     
+# Test suite for findowrds
+# Copyright (c) 2025 John Kuras
+     
+
+
+m4_version_prereq([2.52g])
+
+AT_INIT(1)
+
+AT_COPYRIGHT ([Copyright (c) John Kuras <w7og@yahoo.com>])
+
+AT_COLOR_TESTS
+
+AT_TESTED(../bin/findwords)
+
+m4_define([FINDWORDS_GROUP1_TESTS], [
+  AT_BANNER([simple unit tests on findwords])
+  AT_SETUP([test defaults])
+  AT_KEYWORDS([defaults])
+  AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+  AT_CHECK([testrunner.inp.sh test1.inp], [], [ignore-nolog], [ignore-nolog])
+  AT_CLEANUP
+])
+
+
+
+FINDWORDS_GROUP1_TESTS
