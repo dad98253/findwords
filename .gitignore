@@ -90,3 +90,7 @@ tests/test1.inp.stderr
 tests/test1.inp.stdout
 tests/testsuite
 tests/testsuite.log
+config.h.in~
+configure~
+tmp/
+findwords-*.tar.gz
