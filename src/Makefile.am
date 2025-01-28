@@ -16,7 +16,7 @@ __top_builddir__bin_findwords_LDFLAGS = -Wl,-Map,loadmap.txt
 endif
 
 #add header files
-noinst_HEADERS = findwords.h gitversion.h
+noinst_HEADERS = findwords.h gitversion.h ../config.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS)
 AM_CXXFLAGS = -W -Wall -fmessage-length=0

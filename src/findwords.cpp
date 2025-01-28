@@ -15,6 +15,7 @@
 #include <getopt.h>
 #include <stdlib.h>
 
+#include "../config.h"
 #define IN_MAIN
 #include "findwords.h"
 #include "gitversion.h"
@@ -59,7 +60,7 @@ int main( int argc, char **argv ) {
             break;
 
         case '?':
-            fprintf(stderr, "%s version 0.2, gittag %s\n\n", argv[0],gittag);
+            fprintf(stderr, "%s version %s, gittag %s\n\n", argv[0],VERSION,gittag);
             fprintf(stderr, "Usage: %s [-m,--min-word-size n] [string]\n", argv[0]);
             fprintf(stderr, "       finds all of the permutations of a string that are more that n characters in length.\n");
             fprintf(stderr, "       default for n = 2\n");

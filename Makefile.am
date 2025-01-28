@@ -6,7 +6,7 @@
 ACLOCAL_AMFLAGS = -I m4 --install
 
 # Generate the ChangeLog from git history.
-gen_start_date = 2025-01-15 18:00:00 UTC
+gen_start_date = 2025-01-01 00:00:00 UTC
 .PHONY: gen-ChangeLog
 gen-ChangeLog:
 	if test -d $(top_srcdir)/.git; then \
@@ -58,13 +58,17 @@ EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
 	     build-aux/git-version-gen \
 	     build-aux/gitlog-to-changelog \
 	     man/Makefile.am man/man1/Makefile.am \
-	     man/man1/findwords.1
+	     man/man1/findwords.1 \
+             tests/m4/atenv.m4
 	
 
 LIBTOOL_DEPS = @LIBTOOL_DEPS@
 libtool: $(LIBTOOL_DEPS)
 	$(SHELL) ./config.status libtool
 
+
+@GENERATE_CHANGELOG_RULES@
+  CHANGELOG_START = origin/main
   dist-hook: dist-ChangeLog
 
 distclean-local:

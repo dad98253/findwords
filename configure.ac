@@ -7,13 +7,14 @@ m4_define([findwords_PACKAGE_BUGREPORT], [w7og@yahoo.com])
 m4_define([findwords_TAR_NAME], [findwords])
 m4_define([findwords_URL], [http://www.kuras-pen.net/passwin])
 
-AC_INIT(
-	m4_defn([findwords_PACKAGE_NAME]),
-	[m4_esyscmd([build-aux/git-version-gen --fallback v2.1 .tarball-version])],
-	m4_defn([findwords_PACKAGE_BUGREPORT]),
-	m4_defn([findwords_TAR_NAME]),
-	m4_defn([findwords_URL])
-)
+#AC_INIT(
+#	m4_defn([findwords_PACKAGE_NAME]),
+#	[m4_esyscmd([build-aux/git-version-gen --fallback v2.1 .tarball-version])],
+#	m4_defn([findwords_PACKAGE_BUGREPORT]),
+#	m4_defn([findwords_TAR_NAME]),
+#	m4_defn([findwords_URL])
+#)
+AC_INIT([findwords], [0.2], [w7og@yahoo.com],[findwords],[http://www.kuras-pen.net/passwin])
 
 # Safety check - list a source file that wouldn't be in other directories:
 AC_CONFIG_SRCDIR([src/findwords.cpp])
@@ -248,12 +249,17 @@ AC_OUTPUT
 
 
 # Print configuration summary
+#myPACKAGE_VERSION: $PACKAGE_VERSION
+#version: $FINDWORDS_VERSION, $FINDWORDS_VERSION_1, $FINDWORDS_VERSION_2, $FINDWORDS_VERSION_3
+#myPACKAGE_NAME: m4_defn([findwords_PACKAGE_NAME])
 
 cat <<EOF
 
 
 Configuration summary
 =====================
+
+Building for $host_os
 
 findwords is now configured as follows:
 
@@ -274,4 +280,3 @@ findwords is now configured as follows:
   Compile for older Windows XT:		$findwords_win32
 
 EOF
-
