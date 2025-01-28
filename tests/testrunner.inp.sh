@@ -20,7 +20,7 @@ function printUsage() {
 
 Synopsis
     $scriptName [-t timeout] [-i interval] [-g] [-h] InputFile
-    Run passwin test suite 1.
+    Run findwords test suite 1.
 
     -t timeout
         Number of seconds to wait for process completion.

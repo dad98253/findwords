@@ -1,8 +1,8 @@
 ##
-##  passwin
+##  findwords
 ##
-##  Created by dad on Apr 28, 2023
-##  Copyright (c) 22023 John Kuras
+##  Created by dad on Jan 23, 2025
+##  Copyright (c) 2025 John Kuras
 ##
 
 MAINTAINERCLEANFILES    = Makefile.in
@@ -32,7 +32,9 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 
 TESTSUITES_SRC = $(srcdir)/testsuite.at
 
-EXTRA_DIST = $(TESTSUITES_SRC) $(srcdir)/package.m4 $(TESTSUITE) $(INSTTESTSUITE) atlocal.in
+EXTRA_DIST = $(TESTSUITES_SRC) $(srcdir)/package.m4 $(TESTSUITE) $(INSTTESTSUITE) atlocal.in \
+              testrunner.inp.sh \
+              test1.inp test1.inp.stdout.O0.sha1 test1.inp.stderr.O0.sha1 test1.inp.shalog.O0.sha1
 
 TESTSUITE = $(srcdir)/testsuite
 
