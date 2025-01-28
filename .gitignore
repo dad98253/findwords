@@ -83,7 +83,6 @@ src/.deps/
 stamp-h1
 tests/atconfig
 tests/atlocal
-tests/atlocal.in
 tests/package.m4
 tests/test1.inp.shalog
 tests/test1.inp.stderr
