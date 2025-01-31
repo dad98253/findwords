@@ -58,6 +58,8 @@ EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
 	     build-aux/git-version-gen \
 	     build-aux/gitlog-to-changelog \
 	     man/Makefile.am \
+	     dodeb.sh \
+	     gengitver.sh \
              tests/m4/atenv.m4
 	
 
