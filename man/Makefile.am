@@ -1,3 +1,3 @@
 AUTOMAKE_OPTIONS = foreign no-dependencies
-SUBDIRS = man1
+dist_man1_MANS = findwords.1
 

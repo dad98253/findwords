@@ -30,7 +30,7 @@ AC_CANONICAL_HOST
 
 AC_CONFIG_TESTDIR(tests)
 #AC_CONFIG_FILES([tests/m4], [chmod +x tests/m4])
-AC_CONFIG_FILES([src/Makefile tests/Makefile tests/atlocal man/Makefile man/man1/Makefile])
+AC_CONFIG_FILES([src/Makefile tests/Makefile tests/atlocal man/Makefile])
 
 FINDWORDS_TESTSUITES="core"
 AC_SUBST([FINDWORDS_TESTSUITES])

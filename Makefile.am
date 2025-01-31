@@ -57,8 +57,7 @@ EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
 	     build-aux/Makefile.in \
 	     build-aux/git-version-gen \
 	     build-aux/gitlog-to-changelog \
-	     man/Makefile.am man/man1/Makefile.am \
-	     man/man1/findwords.1 \
+	     man/Makefile.am \
              tests/m4/atenv.m4
 	
 
@@ -79,10 +78,8 @@ distclean-local:
 	@rm Makefile.in
 	@rm tests/Makefile.in
 	@rm man/Makefile.in
-	@rm man/man1/Makefile.in
 	@rm tests/Makefile
 	@rm man/Makefile
-	@rm man/man1/Makefile
 
 help:
 	-@echo "make                    --> build findwords"
