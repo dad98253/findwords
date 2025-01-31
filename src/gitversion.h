@@ -1,1 +1,1 @@
-const char *gitcommit = "caf8ad3f60f630c0513f3f92d3251110055e79c3";const char *gittag = "caf8ad3-dirty";const char *gitbranch = "main";
+const char *gitcommit = "ab27edcd48fa17564f2135848a52f5bb77be9b1e";const char *gittag = "ab27edc";const char *gitbranch = "main";
