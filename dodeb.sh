@@ -48,7 +48,7 @@ $SYSBINDIR/rm ${PROGNAM}_$PVER.orig.tar.gz
 
 $SYSBINDIR/echo clean out old build dir
 $SYSBINDIR/rm -rf $BNAM
-exit
+
 $SYSBINDIR/echo copy over new dist file
 $SYSBINDIR/cp $ORIGDIR/$BNAM.tar.gz .
 
