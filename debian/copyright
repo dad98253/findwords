@@ -11,15 +11,15 @@ Files:     .tarball-version
            Makefile.am
            NEWS
            README.md
+           ChangeLog
            configure.ac
            man/Makefile.am
-           man/man1/Makefile.am
            src/Makefile.am
            src/findwords.h
            src/gitversion.h
            src/permute.cpp
            src/findwords.cpp
-           man/man1/findwords.1
+           man/findwords.1
            tests/Makefile.am
            tests/testsuite.at
            tests/test1.inp
@@ -27,6 +27,18 @@ Files:     .tarball-version
            tests/test1.inp.stderr.O0.sha1
            tests/test1.inp.stdout.O0.sha1
            tests/testrunner.inp.sh
+           debian/changelog
+           debian/control
+           debian/copyright
+           debian/rules
+           debian/salsa-ci.yml
+           debian/watch
+           debian/source/format
+           debian/source/options
+           debian/source/patch-header
+           debian/tests/control
+           debian/tests/test1.inp
+           debian/tests/testrunner.inp.sh
 Copyright:
  2025 John Kuras <w7og@yahoo.com>
 License: dwtfywwi
@@ -61,7 +73,6 @@ Files:     Makefile.in
            config.h.in
            config.h
            aclocal.m4
-           build-aux/ar-lib
            build-aux/compile
            build-aux/depcomp
            build-aux/install-sh
@@ -77,7 +88,6 @@ Files:     Makefile.in
            m4/lt~obsolete.m4
            m4/m4_ax_generate_changelog.m4
            man/Makefile.in
-           man/man1/Makefile.in
            src/Makefile.in
            tests/atlocal.in
            tests/m4/atenv.m4
@@ -93,7 +103,9 @@ License:   __AUTO_PERMISSIVE__
 Files:     build-aux/config.guess
            build-aux/config.sub
 Copyright: 1992-2022 Free Software Foundation, Inc.
-License:   __NO_LICENSE__
+License:   FREE
+ This test suite is free software; the Free Software Foundation gives
+ unlimited permission to copy, distribute and modify it.
 
 Files:     build-aux/gitlog-to-changelog
 Copyright: 2008-2023 Free Software Foundation, Inc.
@@ -197,6 +209,6 @@ License:   PERMISSIVE
 
 Files:     tests/testsuite
 Copyright: 2009-2021 Free Software Foundation, Inc.
-License:   __UNKNOWN__
+License:   FREE
  This test suite is free software; the Free Software Foundation gives
  unlimited permission to copy, distribute and modify it.

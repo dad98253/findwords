@@ -2,7 +2,7 @@ Source: findwords
 Section: misc
 Priority: optional
 Maintainer: John Kuras <w7og@yahoo.com>
-Build-Depends: debhelper-compat (= 13), dh-autoreconf
+Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.6.2
 Homepage: https://github.com/dad98253/findwords/wiki
 Rules-Requires-Root: no
