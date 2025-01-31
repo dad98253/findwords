@@ -1,0 +1,21 @@
+Source: findwords
+Section: misc
+Priority: optional
+Maintainer: John Kuras <w7og@yahoo.com>
+Build-Depends: debhelper-compat (= 13), dh-autoreconf
+Standards-Version: 4.6.2
+Homepage: https://github.com/dad98253/findwords/wiki
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/dad98253/findwords.git
+Vcs-Browser: https://github.com/dad98253/findwords
+
+Package: findwords
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Suggests: aspell | ispell
+Description: find perturbations of characters in a string
+ The output is a word list written to stdout one word per line. The
+ length of the perturbated words will be greater than a minimum length
+ (specified as an option) and less than or equal to the length of the
+ string specified as arg.
