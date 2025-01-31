@@ -156,8 +156,8 @@ if test "$findwords_debug" = "yes"; then
 else
   AM_CONDITIONAL(DEBUG, false)
   AC_DEFINE(NDEBUG, 1, [ Define if you want to disable debug assertions. ])
-  CFLAGS="-O2"
-  CXXFLAGS="-O2"
+  CFLAGS="$CFLAGS -g -O2"
+  CXXFLAGS="-g -O2"
 fi
 
 AC_ARG_ENABLE(profile,
