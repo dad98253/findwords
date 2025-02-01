@@ -68,6 +68,7 @@ build-aux/depcomp
 build-aux/install-sh
 build-aux/ltmain.sh
 build-aux/missing
+build-aux/Makefile.in
 config.h
 config.h.in
 config.log
@@ -78,6 +79,7 @@ m4/libtool.m4
 m4/ltoptions.m4
 m4/ltsugar.m4
 m4/lt~obsolete.m4
+m4/Makefile.in
 man/man1/findwords.1.bak
 src/.deps/
 stamp-h1
