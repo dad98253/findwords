@@ -1,5 +1,5 @@
 Source: permute
-Section: misc
+Section: math
 Priority: optional
 Maintainer: John Kuras <w7og@yahoo.com>
 Build-Depends: debhelper-compat (= 13)
