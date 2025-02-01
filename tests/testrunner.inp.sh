@@ -20,7 +20,7 @@ function printUsage() {
 
 Synopsis
     $scriptName [-t timeout] [-i interval] [-g] [-h] InputFile
-    Run findwords test suite 1.
+    Run permute test suite 1.
 
     -t timeout
         Number of seconds to wait for process completion.
@@ -78,10 +78,10 @@ echo "$1 $v is starting"
 
 #rm -rf $1.dir
 #valgrind --tool=memcheck --error-limit=no --track-origins=yes --max-stackframe=20000000 
-#gdb ../bin/findwords
-#ddd ../bin/findwords
-../../../bin/findwords >$1.stdout 2>$1.stderr
-#/usr/local/bin/findwords >$1.stdout 2>$1.stderr
+#gdb ../bin/permute
+#ddd ../bin/permute
+../../../bin/permute >$1.stdout 2>$1.stderr
+#/usr/local/bin/permute >$1.stdout 2>$1.stderr
 
 if [[ $GenerateSums -eq 1 ]]; then
 	/usr/bin/logger "generating new checksums for $1 using testrunner.inp.sh from $PWD"

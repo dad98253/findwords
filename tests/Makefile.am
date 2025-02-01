@@ -1,5 +1,5 @@
 ##
-##  findwords
+##  permute
 ##
 ##  Created by dad on Jan 23, 2025
 ##  Copyright (c) 2025 John Kuras

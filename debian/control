@@ -1,15 +1,15 @@
-Source: findwords
+Source: permute
 Section: misc
 Priority: optional
 Maintainer: John Kuras <w7og@yahoo.com>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.6.2
-Homepage: https://github.com/dad98253/findwords/wiki
+Homepage: https://github.com/dad98253/permute/wiki
 Rules-Requires-Root: no
-Vcs-Git: https://github.com/dad98253/findwords.git
-Vcs-Browser: https://github.com/dad98253/findwords
+Vcs-Git: https://github.com/dad98253/permute.git
+Vcs-Browser: https://github.com/dad98253/permute
 
-Package: findwords
+Package: permute
 Architecture: any
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends}

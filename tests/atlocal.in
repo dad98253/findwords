@@ -1,13 +1,13 @@
-FINDWORDS_TESTSUITES="@FINDWORDS_TESTSUITES@"
+PERMUTE_TESTSUITES="@PERMUTE_TESTSUITES@"
 
 prefix="@prefix@"
 PACKAGE_TARNAME="@PACKAGE_TARNAME@"
 datarootdir="@datarootdir@"
 docdir="@docdir@"
 
-FINDWORDS_EX_CURRENT_LIST=
+PERMUTE_EX_CURRENT_LIST=
 #for i in $(make -C ${abs_top_builddir}/examples list_examples | \
 #	sed -e '/^[*]\{59\}$/,/^[*]\{59\}$/{s/^ [*] //p;d};d' ) ; do 
-#  FINDWORDS_EX_CURRENT_LIST="$FINDWORDS_EX_CURRENT_LIST $i"
+#  PERMUTE_EX_CURRENT_LIST="$PERMUTE_EX_CURRENT_LIST $i"
 #done
 

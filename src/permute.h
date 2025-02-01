@@ -1,12 +1,12 @@
 /*
- * findwords.h
+ * permute.h
  *
  *  Created on: Jan 22, 2025
  *      Author: dad
  */
 
-#ifndef FINDWORDS_H_
-#define FINDWORDS_H_
+#ifndef PERMUTE_H_
+#define PERMUTE_H_
 
 #ifdef IN_MAIN
 #define EXTERN
@@ -20,4 +20,4 @@
 EXTERN int minWordSize INT2;
 
 
-#endif /* FINDWORDS_H_ */
+#endif /* PERMUTE_H_ */

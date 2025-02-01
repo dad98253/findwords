@@ -14,7 +14,7 @@
 # =======================================================================
 #
 
-export PROGNAM="findwords"
+export PROGNAM="permute"
 export PVER="0.2"
 export BVER="1"
 export BASEBDIR="$HOME/src"

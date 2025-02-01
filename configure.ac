@@ -2,22 +2,22 @@
 # Force autoconf to be at least this version number:
 AC_PREREQ([2.69])
 # Initialize, but use more options.  Note parameters brackets and whitespace.
-m4_define([findwords_PACKAGE_NAME], [findwords])
-m4_define([findwords_PACKAGE_BUGREPORT], [w7og@yahoo.com])
-m4_define([findwords_TAR_NAME], [findwords])
-m4_define([findwords_URL], [http://www.kuras-pen.net/passwin])
+m4_define([permute_PACKAGE_NAME], [permute])
+m4_define([permute_PACKAGE_BUGREPORT], [w7og@yahoo.com])
+m4_define([permute_TAR_NAME], [permute])
+m4_define([permute_URL], [http://www.kuras-pen.net/passwin])
 
 #AC_INIT(
-#	m4_defn([findwords_PACKAGE_NAME]),
+#	m4_defn([permute_PACKAGE_NAME]),
 #	[m4_esyscmd([build-aux/git-version-gen --fallback v2.1 .tarball-version])],
-#	m4_defn([findwords_PACKAGE_BUGREPORT]),
-#	m4_defn([findwords_TAR_NAME]),
-#	m4_defn([findwords_URL])
+#	m4_defn([permute_PACKAGE_BUGREPORT]),
+#	m4_defn([permute_TAR_NAME]),
+#	m4_defn([permute_URL])
 #)
-AC_INIT([findwords], [0.2], [w7og@yahoo.com],[findwords],[http://www.kuras-pen.net/passwin])
+AC_INIT([permute], [0.2], [w7og@yahoo.com],[permute],[http://www.kuras-pen.net/passwin])
 
 # Safety check - list a source file that wouldn't be in other directories:
-AC_CONFIG_SRCDIR([src/findwords.cpp])
+AC_CONFIG_SRCDIR([src/permute.cpp])
 
 # Put autotools auxiliary files in a subdir, so they don't clutter top dir:
 AC_CONFIG_AUX_DIR([build-aux])
@@ -32,8 +32,8 @@ AC_CONFIG_TESTDIR(tests)
 #AC_CONFIG_FILES([tests/m4], [chmod +x tests/m4])
 AC_CONFIG_FILES([src/Makefile tests/Makefile tests/atlocal man/Makefile])
 
-FINDWORDS_TESTSUITES="core"
-AC_SUBST([FINDWORDS_TESTSUITES])
+PERMUTE_TESTSUITES="core"
+AC_SUBST([PERMUTE_TESTSUITES])
 
 build_linux=no
 build_windows=no
@@ -88,15 +88,15 @@ AC_PROG_MKDIR_P
 AM_PROG_CC_C_O
 AC_C_BIGENDIAN
 
-findwords_version_1=`echo $PACKAGE_VERSION | cut -d . -f 1`
-findwords_version_2=`echo $PACKAGE_VERSION | cut -d . -f 2`
-findwords_version_3=`echo $PACKAGE_VERSION | cut -d . -f 3`
-findwords_version=$findwords_version_1.$findwords_version_2.$findwords_version_3
-AC_DEFINE_UNQUOTED(FINDWORDS_VERSION,  "$findwords_version",  [ FINDWORDS version string.  ])
-AC_DEFINE_UNQUOTED(FINDWORDS_VERSION_1, $findwords_version_1, [ FINDWORDS version level 1. ])
-AC_DEFINE_UNQUOTED(FINDWORDS_VERSION_2, $findwords_version_2, [ FINDWORDS version level 2. ])
-AC_DEFINE_UNQUOTED(FINDWORDS_VERSION_3, $findwords_version_3, [ FINDWORDS version level 3. ])
-AC_SUBST(FINDWORDS_VERSION, $findwords_version)
+permute_version_1=`echo $PACKAGE_VERSION | cut -d . -f 1`
+permute_version_2=`echo $PACKAGE_VERSION | cut -d . -f 2`
+permute_version_3=`echo $PACKAGE_VERSION | cut -d . -f 3`
+permute_version=$permute_version_1.$permute_version_2.$permute_version_3
+AC_DEFINE_UNQUOTED(PERMUTE_VERSION,  "$permute_version",  [ PERMUTE version string.  ])
+AC_DEFINE_UNQUOTED(PERMUTE_VERSION_1, $permute_version_1, [ PERMUTE version level 1. ])
+AC_DEFINE_UNQUOTED(PERMUTE_VERSION_2, $permute_version_2, [ PERMUTE version level 2. ])
+AC_DEFINE_UNQUOTED(PERMUTE_VERSION_3, $permute_version_3, [ PERMUTE version level 3. ])
+AC_SUBST(PERMUTE_VERSION, $permute_version)
 # Perhaps check for: (more) programs, libraries, header files, types,
 # structures, compiler characteristics, library functions, system services.
 
@@ -146,12 +146,12 @@ AC_ARG_ENABLE(debug,
   AC_HELP_STRING(
     [--enable-debug],
     [enable development-time debugging @<:@default=disabled@:>@]),
-  [ findwords_debug="$enableval" ],
-  [ findwords_debug="no" ])
-if test "$findwords_debug" = "yes"; then
+  [ permute_debug="$enableval" ],
+  [ permute_debug="no" ])
+if test "$permute_debug" = "yes"; then
   AM_CONDITIONAL(DEBUG, true)
   AC_DEFINE(DEBUG, 1,
-    [ Define if you want findwords to print debug messages to stdout. ])
+    [ Define if you want permute to print debug messages to stdout. ])
   CFLAGS="$CFLAGS -g"
 else
   AM_CONDITIONAL(DEBUG, false)
@@ -163,37 +163,37 @@ fi
 AC_ARG_ENABLE(profile,
   AC_HELP_STRING([--enable-profile],
                  [enable profiling with gprof @<:@default=disabled@:>@]),
-  [ findwords_profile="$enableval" ],
-  [ findwords_profile="no" ])
-if test "$findwords_profile" = "yes"; then
+  [ permute_profile="$enableval" ],
+  [ permute_profile="no" ])
+if test "$permute_profile" = "yes"; then
   CFLAGS="$CFLAGS -pg"
-  AM_CONDITIONAL(FINDWORDS_PROFILE, true)
+  AM_CONDITIONAL(PERMUTE_PROFILE, true)
 else
-  AM_CONDITIONAL(FINDWORDS_PROFILE, false)
+  AM_CONDITIONAL(PERMUTE_PROFILE, false)
 fi
 
 AC_ARG_ENABLE(warnings,
   AC_HELP_STRING(
     [--disable-warnings],
     [disable C compiler warning messages @<:@default=enabled@:>@]),
-  [ findwords_cc_warnings="$enableval" ],
-  [ findwords_cc_warnings="yes" ])
-if test "$findwords_cc_warnings" = "yes"; then
+  [ permute_cc_warnings="$enableval" ],
+  [ permute_cc_warnings="yes" ])
+if test "$permute_cc_warnings" = "yes"; then
   VL_PROG_CC_WARNINGS()
-  AM_CONDITIONAL(FINDWORDS_WARNINGS, true)
+  AM_CONDITIONAL(PERMUTE_WARNINGS, true)
 else
-  AM_CONDITIONAL(FINDWORDS_WARNINGS, false)
+  AM_CONDITIONAL(PERMUTE_WARNINGS, false)
 fi
 
-# check the findwords compile defines
+# check the permute compile defines
 
 AC_ARG_ENABLE(windoze,
   AC_HELP_STRING(
     [--enable-windoze],
     [enable Windows code @<:@default=disabled@:>@]),
-  [ findwords_windoze="$enableval" ],
-  [ findwords_windoze="no" ])
-if test "$findwords_windoze" = "yes"; then
+  [ permute_windoze="$enableval" ],
+  [ permute_windoze="no" ])
+if test "$permute_windoze" = "yes"; then
   AM_CONDITIONAL(WINDOZE, true)
   AC_DEFINE(WINDOZE, 1,
     [ Define if you wish to generate code for the Microsoft Windows gui. ])
@@ -205,9 +205,9 @@ AC_ARG_ENABLE(win32,
   AC_HELP_STRING(
     [--enable-win32],
     [enable Win32 support @<:@default=disabled@:>@]),
-  [ findwords_win32="$enableval" ],
-  [ findwords_win32="no" ])
-if test "$findwords_win32" = "yes"; then
+  [ permute_win32="$enableval" ],
+  [ permute_win32="no" ])
+if test "$permute_win32" = "yes"; then
   AM_CONDITIONAL(WIN32, true)
   AC_DEFINE(WIN32, 1,
     [ Define if you are using an older Windows (XT) Microsoft C compiler. ])
@@ -250,8 +250,8 @@ AC_OUTPUT
 
 # Print configuration summary
 #myPACKAGE_VERSION: $PACKAGE_VERSION
-#version: $FINDWORDS_VERSION, $FINDWORDS_VERSION_1, $FINDWORDS_VERSION_2, $FINDWORDS_VERSION_3
-#myPACKAGE_NAME: m4_defn([findwords_PACKAGE_NAME])
+#version: $PERMUTE_VERSION, $PERMUTE_VERSION_1, $PERMUTE_VERSION_2, $PERMUTE_VERSION_3
+#myPACKAGE_NAME: m4_defn([permute_PACKAGE_NAME])
 
 cat <<EOF
 
@@ -261,7 +261,7 @@ Configuration summary
 
 Building for $host_os
 
-findwords is now configured as follows:
+permute is now configured as follows:
 
 * Compilation environment
 
@@ -273,10 +273,10 @@ findwords is now configured as follows:
   LDFLAGS  = $LDFLAGS
   LIBS     = $LIBS
 
-* findwords options
+* permute options
 
-  Development-time debugging:		$findwords_debug
-  Compile for Windows gui:		$findwords_windoze
-  Compile for older Windows XT:		$findwords_win32
+  Development-time debugging:		$permute_debug
+  Compile for Windows gui:		$permute_windoze
+  Compile for older Windows XT:		$permute_win32
 
 EOF

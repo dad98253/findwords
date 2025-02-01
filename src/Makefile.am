@@ -5,18 +5,18 @@
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
-#build findwords
-bin_PROGRAMS = $(top_builddir)/bin/findwords
+#build permute
+bin_PROGRAMS = $(top_builddir)/bin/permute
 #add in main()
-__top_builddir__bin_findwords_SOURCES = findwords.cpp permute.cpp
+__top_builddir__bin_permute_SOURCES = permute.cpp FindPermutations.cpp
 if FREEBSD
-__top_builddir__bin_findwords_LDFLAGS = -Wl,-Map,loadmap.txt 
+__top_builddir__bin_permute_LDFLAGS = -Wl,-Map,loadmap.txt 
 else
-__top_builddir__bin_findwords_LDFLAGS = -Wl,-Map,loadmap.txt 
+__top_builddir__bin_permute_LDFLAGS = -Wl,-Map,loadmap.txt 
 endif
 
 #add header files
-noinst_HEADERS = findwords.h gitversion.h ../config.h
+noinst_HEADERS = permute.h gitversion.h ../config.h
 
 AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS)
 AM_CXXFLAGS = -W -Wall -fmessage-length=0

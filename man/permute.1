@@ -1,14 +1,14 @@
-.\" Manpage for findwords.
+.\" Manpage for permute.
 .\" Contact w7og@yahoo.com to correct errors or typos.
-.TH man 1 "22 Jan 2025" "3.0" "findwords man page"
+.TH man 1 "22 Jan 2025" "3.0" "permute man page"
 .SH NAME
-findwords \- word perturbation generator
+permute \- word perturbation generator
 .SH SYNOPSIS
-.B findwords [-m] [arg]
+.B permute [-m] [arg]
 .SH DESCRIPTION
 .\" Add any additional description here
 .PP
-findwords will generate every perturbation of the string provided by the argument.
+permute will generate every perturbation of the string provided by the argument.
 .PP
 The output is a word list written to stdout one word per line. The length of the perturbated words will be greater than a minimum length (specified as an option) and less than or equal to the length of the string specified as arg.
 .SH OPTIONS
@@ -40,7 +40,7 @@ No known bugs.
 .\" Add any additional description here
 A common use for the program is to help with certain word puzzels. The following example will find the perturbations of the string "FFERO" and then pass the output through a spell checker to generate a list of possible English words:
 .PP
-\fBfindwords FFERO |sort|uniq>in.txt ; comm -23 in.txt <(aspell list < in.txt) 2>/dev/null\fR
+\fBpermute FFERO |sort|uniq>in.txt ; comm -23 in.txt <(aspell list < in.txt) 2>/dev/null\fR
 .SH AUTHOR
 John Kuras (w7og@yahoo.com)
 .SH "REPORTING BUGS"

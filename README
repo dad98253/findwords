@@ -1,1 +1,16 @@
-required file for some auto-tools
+follow these steps to build permute from scratch:
+
+mkdir ~/src
+cd src
+git clone https://github.com/dad98253/permute.git
+cd permute
+autoreconf -i -f
+./configure
+make
+make check
+# to install locally, enter the following (this installs in /usr/local/bin):
+sudo make install
+# or, to build the debian distribution file, enter the following
+./dodeb.sh
+# then install from the .deb file (note that this will install in /usr/bin , not /usr/local/bin):
+deb -i ~/src/permute_0.2-1_amd64.deb

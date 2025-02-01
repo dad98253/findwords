@@ -59,6 +59,7 @@ EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
 	     build-aux/gitlog-to-changelog \
 	     man/Makefile.am \
 	     dodeb.sh \
+	     README.md \
 	     gengitver.sh \
              tests/m4/atenv.m4
 	
@@ -77,7 +78,7 @@ distclean-local:
 	@rm aclocal.m4
 
 help:
-	-@echo "make                    --> build findwords"
+	-@echo "make                    --> build permute"
 	-@echo "make clean              --> delete what was built"
 	-@echo "make distclean          --> delete auto tools products"
 	-@echo "make dist               --> build distribution package"

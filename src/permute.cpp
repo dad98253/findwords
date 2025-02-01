@@ -1,34 +1,89 @@
-/*
- * permute.cpp
- *
- *  Created on: Jan 22, 2025
- *      Author: dad
- */
-
+//============================================================================
+// Name        : permute.cpp
+// Author      : dad
+// Version     : Rev 0.2
+// Copyright   : (c)John Kuras 2025
+// License     : dwtfywwi
+// Description : find all word purmutations of a string
+//============================================================================
+// usage:
+// ./permute FFERO |sort|uniq>in.txt ; comm -23 in.txt <(aspell list < in.txt) 2>/dev/null
+//
 #include <stdio.h>
-#include "findwords.h"
+#include <string.h>
+#include <unistd.h>
+#include <getopt.h>
+#include <stdlib.h>
 
-void permute(char *str, int n, int start, int len) {
-    if (len == n) {
-    	char temp2 = str[n];
-    	str[n] = '\000';
-        if ( n > minWordSize ) printf("%.*s\n", n, str); // Print the current permutation
-        str[n] = temp2;
-        if (len > 1 && n > 1){
-        	permute(str+1, n-1, 0 , 0 );
+#include "../config.h"
+#define IN_MAIN
+#include "permute.h"
+#include "gitversion.h"
+
+void FindPermutations(char *str, int n, int start, int len);
+
+int main( int argc, char **argv ) {
+
+    char str[] = "ADOB"; // default string (used for debug)
+    char * str2;
+    int n; // Take permutations of size n
+    int c;
+
+    while (1) {
+        int option_index = 0;
+        static struct option long_options[] = {
+            {"min-word-size",  required_argument, 0, 'm'},
+			{"help",  no_argument, 0, '?'},
+			{"version",  no_argument, 0, '?'},
+            {0,         0,                 0,  0 }
+        };
+
+        c = getopt_long(argc, argv, "m:?",
+                        long_options, &option_index);
+        if (c == -1)
+            break;
+
+        switch (c) {
+        case 0:
+            fprintf(stderr," option %s", long_options[option_index].name);
+            if (optarg)
+                fprintf(stderr," with arg %s", optarg);
+            fprintf(stderr,"\n");
+            break;
+
+        case 'm':
+            minWordSize = atoi((const char *)optarg);
+            if ( minWordSize < 0 ) {
+            	fprintf(stderr," warning : the minimum word size cannot be negative, using \"0\"\n");
+				minWordSize = 0;
+            }
+            break;
+
+        case '?':
+            fprintf(stderr, "%s version %s, gittag %s\n\n", argv[0],VERSION,gittag);
+            fprintf(stderr, "Usage: %s [-m,--min-word-size n] [string]\n", argv[0]);
+            fprintf(stderr, "       finds all of the permutations of a string that are more that n characters in length.\n");
+            fprintf(stderr, "       default for n = 2\n");
+            fprintf(stderr, "       default for string = \"ADOB\"\n");
+            exit(EXIT_FAILURE);
+            break;
+
+        default:
+            fprintf(stderr," ?? getopt returned character code 0%o ??\n", c);
         }
-        return;
     }
 
-    for (int i = start; i < n; i++) {
-        // Swap characters to generate new permutations
-        char temp = str[start];
-        str[start] = str[i];
-        str[i] = temp;
-        permute(str, n, start + 1, len + 1);
-        // Backtrack - swap characters back to original position
-        temp = str[start];
-        str[start] = str[i];
-        str[i] = temp;
-    }
+    if (optind < argc) {
+    	str2 = argv[optind++];
+    } else {
+		str2=str;
+	}
+
+	n = strlen(str2);
+	fprintf(stderr," finding all of the permutations of %s that are more than %i characters long\n",str2,minWordSize);
+    FindPermutations(str2, n, 0, 0);
+
+    return 0;
 }
+
+

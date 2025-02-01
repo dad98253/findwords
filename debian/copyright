@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: findwords
+Upstream-Name: permute
 Upstream-Contact: John Kuras <w7og@yahoo.com>
-Source: https://github.com/dad98253/findwords.git
+Source: https://github.com/dad98253/permute.git
 #
 # Please double check copyright with the licensecheck(1) command.
 
@@ -15,13 +15,14 @@ Files:     .tarball-version
            configure.ac
            dodeb.sh
            gengitver.sh
+           README
            man/Makefile.am
            src/Makefile.am
-           src/findwords.h
+           src/permute.h
            src/gitversion.h
+           src/FindPermutations.cpp
            src/permute.cpp
-           src/findwords.cpp
-           man/findwords.1
+           man/permute.1
            tests/Makefile.am
            tests/testsuite.at
            tests/test1.inp

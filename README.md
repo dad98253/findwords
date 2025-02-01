@@ -1,4 +1,4 @@
-# findwords
+# permute
 A program to help find perturbations of characters in a string.
 The primary purpose of this program is to help cheat when playing
 online word games.
@@ -7,7 +7,7 @@ Note that the program will generate a number of false positives
 easily identified by a quick (human) scan of the final list.
 
 Usage:
-./findwords ABCD |sort|uniq>in.txt
+./permute ABCD |sort|uniq>in.txt
 
 comm -23 in.txt <(aspell list < in.txt)
 

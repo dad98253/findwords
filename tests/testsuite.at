@@ -13,10 +13,10 @@ AT_COPYRIGHT ([Copyright (c) John Kuras <w7og@yahoo.com>])
 
 AT_COLOR_TESTS
 
-AT_TESTED(../bin/findwords)
+AT_TESTED(../bin/permute)
 
-m4_define([FINDWORDS_GROUP1_TESTS], [
-  AT_BANNER([simple unit tests on findwords])
+m4_define([PERMUTE_GROUP1_TESTS], [
+  AT_BANNER([simple unit tests on permute])
   AT_SETUP([test defaults])
   AT_KEYWORDS([defaults])
   AT_CAPTURE_FILE($(testsubdir)/fail.log[])
@@ -26,4 +26,4 @@ m4_define([FINDWORDS_GROUP1_TESTS], [
 
 
 
-FINDWORDS_GROUP1_TESTS
+PERMUTE_GROUP1_TESTS

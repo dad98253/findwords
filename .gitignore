@@ -81,6 +81,7 @@ m4/ltsugar.m4
 m4/lt~obsolete.m4
 m4/Makefile.in
 man/man1/findwords.1.bak
+man/man1/permute.1.bak
 src/.deps/
 stamp-h1
 tests/atconfig
@@ -94,5 +95,6 @@ tests/testsuite.log
 config.h.in~
 configure~
 tmp/
-findwords-*.tar.gz
+findwords-0.2.tar.gz
+permute-0.2.tar.gz
 /Release/
