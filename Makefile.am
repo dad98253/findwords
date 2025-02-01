@@ -73,15 +73,8 @@ libtool: $(LIBTOOL_DEPS)
   dist-hook: dist-ChangeLog
 
 distclean-local:
-	@rm config.status configure config.log
-	@rm Makefile
 	@rm -r autom4te.cache/
 	@rm aclocal.m4
-	@rm Makefile.in
-	@rm tests/Makefile.in
-	@rm man/Makefile.in
-	@rm tests/Makefile
-	@rm man/Makefile
 
 help:
 	-@echo "make                    --> build findwords"
