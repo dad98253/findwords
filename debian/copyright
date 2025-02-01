@@ -13,6 +13,8 @@ Files:     .tarball-version
            README.md
            ChangeLog
            configure.ac
+           dodeb.sh
+           gengitver.sh
            man/Makefile.am
            src/Makefile.am
            src/findwords.h
