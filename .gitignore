@@ -93,3 +93,4 @@ config.h.in~
 configure~
 tmp/
 findwords-*.tar.gz
+/Release/
