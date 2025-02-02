@@ -122,6 +122,8 @@ color = auto
 
 
 # to build the debian package file, enter the following
+# Note: if you are not building for the amd64 architecture, be sure to set
+#       the value the the varianle "BARCH" (near the top of dodeb.sh) to your arch
 ./dodeb.sh
 
 # the .deb file will be created in ~/src
