@@ -50,6 +50,9 @@ QUILT_COLORS="${QUILT_COLORS}diff_ctx=35:diff_cctx=33"
 if ! [ -d $d/debian/patches ]; then mkdir $d/debian/patches; fi
 fi
 
+# if you don't recall your gpg key id, list it:
+gpg --list-keys --with-subkey-fingerprint --keyid-format=short
+
 # if you don't have one, generate a gpg key:
 gpg --gen-key --default-new-key-algo=rsa4096/cert,sign+rsa4096/encr
 
