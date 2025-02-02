@@ -16,6 +16,7 @@ Files:     .tarball-version
            dodeb.sh
            gengitver.sh
            README
+           BUILD
            man/Makefile.am
            src/Makefile.am
            src/permute.h
@@ -107,45 +108,15 @@ Files:     build-aux/config.guess
            build-aux/config.sub
 Copyright: 1992-2022 Free Software Foundation, Inc.
 License:   FREE
- This test suite is free software; the Free Software Foundation gives
- unlimited permission to copy, distribute and modify it.
 
 Files:     build-aux/gitlog-to-changelog
 Copyright: 2008-2023 Free Software Foundation, Inc.
 License:   GPL-3.0+
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <https://www.gnu.org/licenses/>.
- .
- Written by Jim Meyering
- .
- This is a prologue that allows to run a perl script as an executable
- on systems that are compliant to a POSIX version before POSIX:2017.
- On such systems, the usual invocation of an executable through execlp()
- or execvp() fails with ENOEXEC if it is a script that does not start
- with a #! line.  The script interpreter mentioned in the #! line has
- to be /bin/sh, because on GuixSD systems that is the only program that
- has a fixed file name.  The second line is essential for perl and is
- also useful for editing this file in Emacs.  The next two lines below
- are valid code in both sh and perl.  When executed by sh, they re-execute
- the script through the perl program found in $PATH.  The '-x' option
- is essential as well; without it, perl would re-execute the script
- through /bin/sh.  When executed by perl, the next two lines are a no-op.
- .
- On Debian systems, the complete text of the GNU General Public License
- Version 3 can be found in `/usr/share/common-licenses/GPL-3'.
 
 Files:     build-aux/git-version-gen
 Copyright: 2007-2023 Free Software Foundation, Inc.
+License:   GPL-3.0+
+
 License:   GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -212,6 +183,8 @@ License:   PERMISSIVE
 
 Files:     tests/testsuite
 Copyright: 2009-2021 Free Software Foundation, Inc.
+License:   FREE
+
 License:   FREE
  This test suite is free software; the Free Software Foundation gives
  unlimited permission to copy, distribute and modify it.
