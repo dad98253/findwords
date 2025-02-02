@@ -60,6 +60,7 @@ EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
 	     man/Makefile.am \
 	     dodeb.sh \
 	     README.md \
+	     BUILD \
 	     gengitver.sh \
              tests/m4/atenv.m4
 	
