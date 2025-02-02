@@ -24,8 +24,8 @@ sudo make install
 # ---------------------------------------------------------------------------------------
 
 # if you plan to build a debian package file, you will also need the following:
-sudo apt-get install debmake devscripts dh_autoreconf autopkgtest dpkg-deb quilt lintian
-sudo apt-get install gpg gpg-agent sbuild schroot lintian ccache libeatmydata1 parallel 
+sudo apt-get install debmake devscripts dh_autoreconf autopkgtest dpkg quilt lintian
+sudo apt-get install gpg gpg-agent sbuild schroot ccache libeatmydata1 parallel 
 sudo apt-get install sbuild-debian-developer-setup git-buildpackage
 
 # also, set the following to your ~/.bashrc file:
