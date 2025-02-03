@@ -66,7 +66,7 @@ sudo sbuild-debian-developer-setup -s unstable
 # create ~/.sbuildrc and do the following to add to it:
 # Note: if you are not building for the amd64 architecture, be sure to
 #       change "amd64" to your arch
-#       hints: Apple G5 is ppc64, Raspberry pi 3/4 is arm64, and Beaglebone is armhf
+#       hints: Apple G5 is ppc64, Raspberry pi 3/4 and Beaglebone is armhf
 cat >~/.sbuildrc << 'EOF'
 ##############################################################################
 # PACKAGE BUILD RELATED (source-only-upload as default)
@@ -136,9 +136,7 @@ color = auto
 
 sudo dpkg -i ~/src/permute_0.2-1_amd64.deb	# (on intel based PCs)
 # or
-sudo dpkg -i ~/src/permute_0.2-1_armhf.deb	# (Beaglebone)
-# or
-sudo dpkg -i ~/src/permute_0.2-1_arm64.deb	# (Raspberry pi)
+sudo dpkg -i ~/src/permute_0.2-1_armhf.deb	# (Beaglebone/Raspberry pi)
 # or
 sudo dpkg -i ~/src/permute_0.2-1_ppc64.deb	# (on Apple G5)
 
