@@ -1,6 +1,6 @@
 # follow these steps to build permute from scratch:
 
-# first, make sure that all of the prerequisits are installed:
+# first, make sure that all of the prerequisites are installed:
 sudo apt-get update
 sudo apt-get install build-essential libc6-dev autoconf automake libtool gettext autotools-dev git 
 
@@ -23,7 +23,7 @@ sudo make install
 
 # ---------------------------------------------------------------------------------------
 
-# if you plan to build a debian package file, you will also need the following:
+# if you plan to build a Debian package file, you will also need the following:
 sudo apt-get install debmake devscripts dh_autoreconf autopkgtest dpkg quilt lintian
 sudo apt-get install gpg gpg-agent sbuild schroot ccache libeatmydata1 parallel 
 sudo apt-get install sbuild-debian-developer-setup git-buildpackage
@@ -64,6 +64,9 @@ DEBSIGN_KEYID="Your_GPG_keyID_from_above"
 sudo sbuild-debian-developer-setup -s unstable
 
 # create ~/.sbuildrc and do the following to add to it:
+# Note: if you are not building for the amd64 architecture, be sure to
+#       change "amd64" to your arch
+#       hints: Apple G5 is ppc64, Raspberry pi 3/4 is arm64, and Beaglebone is armhf
 cat >~/.sbuildrc << 'EOF'
 ##############################################################################
 # PACKAGE BUILD RELATED (source-only-upload as default)
@@ -94,7 +97,9 @@ $autopkgtest_opts = [ '--', 'schroot', '%r-%a-sbuild' ];
 1;
 EOF
 
-#set up a dedicated persistent chroot “source:unstable-amd64-desktop” by (example for amd64 arch):
+#set up a dedicated persistent chroot “source:unstable-amd64-desktop” by:
+# Note: if you are not building for the amd64 architecture, be sure to
+#       change "amd64" to your arch
 $ sudo cp -a /srv/chroot/unstable-amd64-sbuild /srv/chroot/unstable-amd64-desktop
 $ sudo tee /etc/schroot/chroot.d/unstable-amd64-desktop << EOF
 [unstable-amd64-desktop]
@@ -131,5 +136,10 @@ color = auto
 
 sudo dpkg -i ~/src/permute_0.2-1_amd64.deb	# (on intel based PCs)
 # or
-sudo dpkg -i ~/src/permute_0.2-1_armhf.deb	# (on ARM based computers)
+sudo dpkg -i ~/src/permute_0.2-1_armhf.deb	# (Beaglebone)
+# or
+sudo dpkg -i ~/src/permute_0.2-1_arm64.deb	# (Raspberry pi)
+# or
+sudo dpkg -i ~/src/permute_0.2-1_ppc64.deb	# (on Apple G5)
+
 
