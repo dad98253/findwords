@@ -1,6 +1,6 @@
 # Process with autom4te to create an -*- Autotest -*- test suite.
      
-# Test suite for findowrds
+# Test suite for permute
 # Copyright (c) 2025 John Kuras
      
 
@@ -9,21 +9,87 @@ m4_version_prereq([2.52g])
 
 AT_INIT(1)
 
-AT_COPYRIGHT ([Copyright (c) John Kuras <w7og@yahoo.com>])
+AT_COPYRIGHT ([Copyright (c) 2025 John Kuras <w7og@yahoo.com>])
 
 AT_COLOR_TESTS
 
 AT_TESTED(../bin/permute)
 
-m4_define([PERMUTE_GROUP1_TESTS], [
-  AT_BANNER([simple unit tests on permute])
-  AT_SETUP([test defaults])
-  AT_KEYWORDS([defaults])
-  AT_CAPTURE_FILE($(testsubdir)/fail.log[])
-  AT_CHECK([testrunner.inp.sh test1.inp], [], [ignore-nolog], [ignore-nolog])
-  AT_CLEANUP
-])
+AT_BANNER([simple argument tests])
+
+AT_SETUP([test defaults])
+AT_KEYWORDS([defaults])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test1], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([--help])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test2], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([-?])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test3], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([--min-word-size=3])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test4], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([-m 3])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test5], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([out of range option (-m 0)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test6], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([bad option (-x 3)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test7], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([bad option value (-m x)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test8], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([out of range option (-m 40)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test9], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([too many args (xxx yyy)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test10], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([single arg (abc)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test11], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
+
+AT_SETUP([option with arg (-m 3 abcd)])
+AT_KEYWORDS([arguments])
+AT_CAPTURE_FILE($(testsubdir)/fail.log[])
+AT_CHECK([testrunner.inp.sh test12], [], [ignore-nolog], [ignore-nolog])
+AT_CLEANUP
 
 
 
-PERMUTE_GROUP1_TESTS
+
+

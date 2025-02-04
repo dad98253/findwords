@@ -80,8 +80,11 @@ echo "$1 $v is starting"
 #valgrind --tool=memcheck --error-limit=no --track-origins=yes --max-stackframe=20000000 
 #gdb ../bin/permute
 #ddd ../bin/permute
-../../../bin/permute >$1.stdout 2>$1.stderr
+#../../../bin/permute >$1.stdout 2>$1.stderr
 #/usr/local/bin/permute >$1.stdout 2>$1.stderr
+command=$(head -n 1 $1.cmd)
+echo command = $command
+cat $1.inp | eval "$command"
 
 if [[ $GenerateSums -eq 1 ]]; then
 	/usr/bin/logger "generating new checksums for $1 using testrunner.inp.sh from $PWD"
