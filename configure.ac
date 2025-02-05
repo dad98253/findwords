@@ -65,8 +65,10 @@ AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
 AM_CONDITIONAL([FREEBSD], [test "$build_freebsd" = "yes"])
 AM_CONDITIONAL([DARWIN], [test "$build_darwin" = "yes"])
 
-#AM_GNU_GETTEXT([external])
-#AM_GNU_GETTEXT_VERSION(0.17)
+# Gettext.
+AM_GNU_GETTEXT([external], [need-formatstring-macros])
+AM_GNU_GETTEXT_VERSION([0.21])
+
 # see GNU autoconf archive = perdefined macros
 if test "$build_linux" = "yes"; then
 AX_GENERATE_CHANGELOG

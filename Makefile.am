@@ -50,7 +50,7 @@ dist-hook:
 	echo '$(VERSION)' > $(distdir)/.tarball-version
 
 
-SUBDIRS=. src tests man
+SUBDIRS=. src tests man po
 
 
 EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \

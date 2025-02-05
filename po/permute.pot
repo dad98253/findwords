@@ -1,0 +1,64 @@
+# strings from the permute program
+# Copyright (C) 2025 John Kuras
+# This file is distributed under the same license as the permute package.
+# John Kuras <w7og@yahoo.com>, 2025.
+#
+#: src/permute.cpp:36
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: permute 0.2\n"
+"Report-Msgid-Bugs-To: w7og@yahoo.com\n"
+"POT-Creation-Date: 2025-02-04 20:50-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/permute.cpp:59
+#, c-format
+msgid " option %s"
+msgstr ""
+
+#: src/permute.cpp:68
+#, c-format
+msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgstr ""
+
+#: src/permute.cpp:74
+#, c-format
+msgid "%s version %s, gittag %s\n\n"
+msgstr ""
+
+#: src/permute.cpp:75
+#, c-format
+msgid "Usage: %s [-m,--min-word-size n] [string]\n"
+msgstr ""
+
+#: src/permute.cpp:76
+#, c-format
+msgid "       finds all of the permutations of a string that are more that n characters in length.\n"
+msgstr ""
+
+#: src/permute.cpp:77
+#, c-format
+msgid "       default for n = 2\n"
+msgstr ""
+
+#: src/permute.cpp:78
+#, c-format
+msgid "       default for string = \"ADOB\"\n"
+msgstr ""
+
+#: src/permute.cpp:83
+#, c-format
+msgid " ?? getopt returned character code 0%o ??\n"
+msgstr ""
+
+#: src/permute.cpp:94
+#, c-format
+msgid " finding all of the permutations of %s that are more than %i characters long\n"
+msgstr ""
