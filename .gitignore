@@ -116,6 +116,7 @@ po/stamp-po
 doc/.dirstamp
 ABOUT-NLS
 doc/version.texi
+config.in
 config.in~
 doc/permute.info
 doc/stamp-vti
