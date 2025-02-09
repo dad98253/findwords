@@ -114,3 +114,17 @@ permute*.tar.gz
 src/.dirstamp
 po/stamp-po
 doc/.dirstamp
+ABOUT-NLS
+doc/version.texi
+config.in~
+doc/permute.info
+doc/stamp-vti
+man/permute.1
+po/Rules-quot
+po/boldquot.sed
+po/en@boldquot.header
+po/en@quot.header
+po/insert-header.sin
+po/quot.sed
+po/remove-potcdate.sin
+/locales
