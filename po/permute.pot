@@ -1,64 +1,109 @@
-# strings from the permute program
-# Copyright (C) 2025 John Kuras
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR John Kuras
 # This file is distributed under the same license as the permute package.
-# John Kuras <w7og@yahoo.com>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: src/permute.cpp:36
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: permute 0.2\n"
+"Project-Id-Version: permute UNKNOWN\n"
 "Report-Msgid-Bugs-To: w7og@yahoo.com\n"
-"POT-Creation-Date: 2025-02-04 20:50-0800\n"
+"POT-Creation-Date: 2025-02-08 14:26-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/permute.cpp:59
+#: src/permute.cpp:106
 #, c-format
 msgid " option %s"
 msgstr ""
 
-#: src/permute.cpp:68
+#: src/permute.cpp:115
 #, c-format
 msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
 msgstr ""
 
-#: src/permute.cpp:74
+#: src/permute.cpp:121
 #, c-format
-msgid "%s version %s, gittag %s\n\n"
+msgid "Usage: %s [OPTION]... [STRING]\n"
 msgstr ""
 
-#: src/permute.cpp:75
+#: src/permute.cpp:122
 #, c-format
-msgid "Usage: %s [-m,--min-word-size n] [string]\n"
+msgid "Find the permutations of a string.\n"
 msgstr ""
 
-#: src/permute.cpp:76
+#: src/permute.cpp:123
 #, c-format
-msgid "       finds all of the permutations of a string that are more that n characters in length.\n"
+msgid "  -m, --min-word-size=N    the minimum size of a derived word\n"
 msgstr ""
 
-#: src/permute.cpp:77
+#: src/permute.cpp:124
 #, c-format
-msgid "       default for n = 2\n"
+msgid "  -x, --max-word-size=X    the maximum size of a derived word\n"
 msgstr ""
 
-#: src/permute.cpp:78
+#: src/permute.cpp:125
 #, c-format
-msgid "       default for string = \"ADOB\"\n"
+msgid "  -?, --help               display this help and exit\n"
 msgstr ""
 
-#: src/permute.cpp:83
+#: src/permute.cpp:126
+#, c-format
+msgid "  -v, --version            output version information and exit\n"
+msgstr ""
+
+#: src/permute.cpp:127
+#, c-format
+msgid "  STRING                   the string of characters to be permuted\n"
+msgstr ""
+
+#: src/permute.cpp:128
+#, c-format
+msgid "       default for N = 2\n"
+msgstr ""
+
+#: src/permute.cpp:129
+#, c-format
+msgid "       default for X = length of STRING\n"
+msgstr ""
+
+#: src/permute.cpp:130
+#, c-format
+msgid "       default for STRING = \"ADOB\"\n"
+msgstr ""
+
+#: src/permute.cpp:131
+#, c-format
+msgid ""
+"       to find the permutations of STRING taken M at a time (i.e., P(STRING,"
+"M))\n"
+msgstr ""
+
+#: src/permute.cpp:132
+#, c-format
+msgid "       enter: permute -m M -x M STRING\n"
+msgstr ""
+
+#: src/permute.cpp:137
+#, c-format
+msgid ""
+"%s version %s, gittag %s\n"
+"\n"
+msgstr ""
+
+#: src/permute.cpp:142
 #, c-format
 msgid " ?? getopt returned character code 0%o ??\n"
 msgstr ""
 
-#: src/permute.cpp:94
+#: src/permute.cpp:153
 #, c-format
-msgid " finding all of the permutations of %s that are more than %i characters long\n"
+msgid ""
+" finding all of the permutations of %s that are more than %i characters "
+"long\n"
 msgstr ""

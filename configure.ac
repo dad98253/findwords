@@ -7,30 +7,86 @@ m4_define([permute_PACKAGE_BUGREPORT], [w7og@yahoo.com])
 m4_define([permute_TAR_NAME], [permute])
 m4_define([permute_URL], [http://www.kuras-pen.net/passwin])
 
-#AC_INIT(
-#	m4_defn([permute_PACKAGE_NAME]),
-#	[m4_esyscmd([build-aux/git-version-gen --fallback v2.1 .tarball-version])],
-#	m4_defn([permute_PACKAGE_BUGREPORT]),
-#	m4_defn([permute_TAR_NAME]),
-#	m4_defn([permute_URL])
-#)
-AC_INIT([permute], [0.2], [w7og@yahoo.com],[permute],[http://www.kuras-pen.net/passwin])
-
-# Safety check - list a source file that wouldn't be in other directories:
-AC_CONFIG_SRCDIR([src/permute.cpp])
-
-# Put autotools auxiliary files in a subdir, so they don't clutter top dir:
-AC_CONFIG_AUX_DIR([build-aux])
-
-AC_CONFIG_MACRO_DIR([m4])
+AC_INIT(
+	m4_defn([permute_PACKAGE_NAME]),
+	[m4_esyscmd([build-aux/git-version-gen --fallback v2.1 .tarball-version])],
+	m4_defn([permute_PACKAGE_BUGREPORT]),
+	m4_defn([permute_TAR_NAME]),
+	m4_defn([permute_URL])
+)
 
 AC_CANONICAL_TARGET
 # AC_CANONICAL_HOST is needed to access the 'host_os' variable
 AC_CANONICAL_HOST
 
+# Put autotools auxiliary files in a subdir, so they don't clutter top dir:
+AC_CONFIG_AUX_DIR([build-aux])
+
+# Enable "automake" to simplify creating makefiles:
+AM_INIT_AUTOMAKE([
+	1.11
+	readme-alpha
+	subdir-objects
+	-Wall -Werror
+])
+
+# Put configuration results here, so we can easily #include them:
+AC_CONFIG_HEADERS([config.h:config.in])
+
+# Safety check - list a source file that wouldn't be in other directories:
+AC_CONFIG_SRCDIR([src/permute.cpp])
+
+AC_CONFIG_MACRO_DIR([m4])
+
+# Look for a C compiler:
+AC_PROG_CC([gcc cl cc])
+
+dnl Since we use gnulib: gl_EARLY must be called as soon as possible after
+dnl the C compiler is checked.  The others could be later, but we just
+dnl keep everything together.
+#gl_EARLY
+#gl_INIT
+
+dnl Are we building from git checked-out sources, or a tarball ?
+dnl This is used in "Makefile.am" to avoid re-generating the manpage
+dnl when building from tarballs.
+AM_CONDITIONAL([BUILD_FROM_GIT], [test -d "$srcdir/.git"])
+AM_CONDITIONAL([GIT_CROSS_COMPILING],
+               [test -d "$srcdir/.git" && test $cross_compiling = yes])
+
+dnl GNU help2man creates man pages from --help output; in many cases, this
+dnl is sufficient, and obviates the need to maintain man pages separately.
+dnl However, this means invoking executables, which we generally cannot do
+dnl when cross-compiling, so we test to avoid that (the variable
+dnl "cross_compiling" is set by AC_PROG_CC).
+AS_IF([test $cross_compiling = no], [
+  AM_MISSING_PROG([HELP2MAN], [help2man])
+], [
+  HELP2MAN=:
+])
+
+dnl Ensure VLAs are not used.
+AC_DEFINE([GNULIB_NO_VLA], [1], [Define to 1 to disable use of VLAs])
+
+# Gettext.
+AM_GNU_GETTEXT_VERSION([0.21])
+AM_GNU_GETTEXT([external], [need-formatstring-macros])
+
 AC_CONFIG_TESTDIR(tests)
+
+# other files to creat
 #AC_CONFIG_FILES([tests/m4], [chmod +x tests/m4])
-AC_CONFIG_FILES([src/Makefile tests/Makefile tests/atlocal man/Makefile])
+#AC_CONFIG_FILES([src/Makefile tests/Makefile tests/atlocal man/Makefile])
+AC_CONFIG_FILES([Makefile
+	m4/Makefile
+	build-aux/Makefile
+	tests/Makefile
+	tests/atlocal
+	po/Makefile.in
+	src/Makefile
+	man/Makefile
+])
+
 
 PERMUTE_TESTSUITES="core"
 AC_SUBST([PERMUTE_TESTSUITES])
@@ -65,20 +121,12 @@ AM_CONDITIONAL([WINDOWS], [test "$build_windows" = "yes"])
 AM_CONDITIONAL([FREEBSD], [test "$build_freebsd" = "yes"])
 AM_CONDITIONAL([DARWIN], [test "$build_darwin" = "yes"])
 
-# Gettext.
-AM_GNU_GETTEXT([external], [need-formatstring-macros])
-AM_GNU_GETTEXT_VERSION([0.21])
-
 # see GNU autoconf archive = perdefined macros
 if test "$build_linux" = "yes"; then
 AX_GENERATE_CHANGELOG
 fi
 
-# Enable "automake" to simplify creating makefiles:
-AM_INIT_AUTOMAKE([1.11 subdir-objects -Wall -Werror])
-
-# Look for a C compiler:
-AC_PROG_CC([gcc cl cc])
+# Set C compiler options:
 AC_PROG_CXX
 AM_PROG_AS
 AC_PROG_INSTALL
@@ -232,16 +280,6 @@ AC_C_INLINE
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-
-# Output files
-# Put configuration results here, so we can easily #include them:
-AC_CONFIG_HEADERS([config.h])
-# other files to creat
-AC_CONFIG_FILES([
-Makefile
-m4/Makefile
-build-aux/Makefile
-])
 
 MY_CPPFLAGS=""
 AC_SUBST(MY_CPPFLAGS)

@@ -1,0 +1,302 @@
+\input texinfo @c -*-texinfo-*-
+@c %**start of header
+@setfilename permute.info
+@include version.texi
+@settitle GNU Permute @value{VERSION}
+
+@c Define a new index for options.
+@defcodeindex op
+@c Combine everything into one index (arbitrarily chosen to be the
+@c concept index).
+@syncodeindex op cp
+@c %**end of header
+
+@copying
+This manual is for Permute (version @value{VERSION}, @value{UPDATED}),
+which prints every permutation of a string provided by the user.
+
+Copyright @copyright{} 2025 John Kuras
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying
+@c If your manual is published on paper by the FSF, it should include
+@c the standard FSF Front-Cover and Back-Cover Texts, as given in
+@c maintain.texi.
+
+@dircategory Basics
+@direntry
+* Permute: (permute).               TODO.
+@end direntry
+
+@titlepage
+@title Permute
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author Permute Developer (@email{bug-permute@@gnu.org})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+
+@ifnottex
+@node Top
+@top Permute
+
+This manual is for Permute (version @value{VERSION}, @value{UPDATED}),
+which prints every permutation of a string provided by the user.
+@end ifnottex
+
+@menu
+* Overview::		General purpose and information.
+* Sample output::	Sample output from @command{permute}.
+* Invoking permute::	How to run @command{permute}.
+* Reporting bugs::	Sending bug reports and feature suggestions.
+* GNU Free Documentation License:: Copying and sharing this documentation.
+* Concept index::	Index of concepts.
+@end menu
+
+
+@node Overview
+@chapter Overview
+
+@cindex greetings
+@cindex overview
+
+The GNU @command{permute} program
+(@url{https://www.gnu.org/software/TBD/}) finds every permutation of a string..
+It allows nonmathematitions to use a classic computer
+algorithm which would otherwise be unavailable to them.
+
+@cindex joke, not
+Not to spoil the joke, but of course the practical purpose of
+Permute is to serve as a tool that can be used to cheat at certain word
+puzzels.
+
+@cindex coding standards
+@cindex maintainer standards
+@cindex standards, coding
+@cindex standards, maintainer
+First, Permute follows the Kuras coding standards
+(@pxref{Top,,Preface,standards,Kuras Coding Standards}) and maintainer standards (@pxref{Top,,Preface,maintain, Information for
+Permute Maintainers}).  These are the basic documents which all Kuras
+packages should adhere to.
+
+The Permute package also implements recommended development practices
+not embodied in the standards, using GNU packages and features:
+
+@itemize @bullet
+@item
+@cindex Automake
+@cindex Autoconf
+It uses Automake (@pxref{Top,,Introduction,automake,GNU Automake}) and
+hence also Autoconf (@pxref{Top,,Introduction,autoconf,GNU Autoconf})
+for configuration.
+
+@item
+@cindex Gnulib
+@cindex @command{srclist-update} script
+@cindex @file{README-dev} source file
+It uses Gnulib (@pxref{Top,,Introduction,gnulib,GNU Gnulib}) to enhance
+portability and avoid duplication of common sources.  Both
+@code{gnulib-tool} and @code{srclist-update} are used, for purposes of
+example.  See the @file{README-dev} file in the distribution.
+
+@item
+@cindex Gettext
+GNU Gettext (@pxref{Top,,Introduction,gettext,GNU Gettext}) is used
+for internationalization support.  Permute's messages have been translated
+into many languages.
+
+@item
+@opindex --help
+Internally, Permute uses the GNU @code{getopt_long} function
+(@pxref{Getopt Long Options,,,libc,GNU C Library}) to parse options,
+thus supporting GNU-style long options such as @option{--help}.
+
+@item
+@cindex Help2man
+The Permute Man page is generated with GNU @code{help2man}
+(@pxref{Top,,Overview,help2man,GNU @code{help2man}}) from the
+@option{--help} output.  This relieves the maintainers from the burden
+of updating separate man documentation, yet provides a reasonable
+overview for man devotees.
+
+@item
+@cindex Texinfo
+Finally, Texinfo (@pxref{Top,,Introduction,texinfo,Texinfo}) is the
+documentation format for this manual.  It supports output in Info,
+HTML, PDF, DVI, plain text, XML, and other formats.
+
+@end itemize
+
+Permute is implemented in C@. plus a subset of c++ extensions.  The GNU Gettext distribution contains examples in many other programming languages; see the
+Gettext home page at @url{https://www.gnu.org/software/gettext/}.
+
+@cindex @file{Makefile.am} targets
+The top-level @file{Makefile.am} in Permute also contains a few special
+targets for other projects to adapt as desired:
+
+@table @code
+@item diff
+Make a diff from the previous release, assuming the current tarball is
+in the current tarball.
+
+@item po-check
+Verify that all source files using @code{_()} are included for
+translation in @file{po/POTFILES.in}, so translators will have all the
+messages.
+
+@item wwwdoc
+Sample procedure for updating the manual on the a web site, in this
+case @url{https://www.TODO/software/permute/manual/}.
+@end table
+
+@cindex author
+@cindex Kuras, John
+Permute was written by @w{dad} (John Kuras)
+
+@node Sample output
+@chapter Sample output
+
+@cindex sample output
+@cindex examples
+
+Here are some examples of running Permute.
+
+This is the output of the command @samp{permute}:
+
+@example
+Permute, TODO!
+@end example
+
+This is the output of the command @samp{permute --TODO}:
+
+@example
+permute, TODO
+@end example
+
+This is the output of the command @samp{permute --TODO=hi}:
+
+@example
+TODO
+@end example
+
+
+@node Invoking permute
+@chapter Invoking @command{permute}
+
+@cindex invoking
+@cindex options
+@cindex usage
+@cindex help
+
+The format for running the @command{permute} program is:
+
+@example
+permute @var{option} @dots{}
+@end example
+
+With no options, @command{permute} prints the greeting @samp{TODO!}.
+
+@command{permute} supports the following options:
+
+@table @option
+@item --TODO=@var{text}
+@itemx -g @var{text}
+@opindex --TODO
+@opindex -g
+Output @var{text} instead of the default TODO.
+
+@item --help
+@itemx -h
+@opindex --help
+@opindex -h
+Print an informative help message on standard output and exit
+successfully.
+
+@cindex environment variables, help for
+@c This comment prevents `make syntax-check' from diagnosing a doubled word "for\nFor"
+For the @option{--help} output of linux programs, it's strongly
+encouraged to include a brief (one or two sentences) description of
+what the program does, as well as the synopsis of how to run the
+program.  Any environment variables which affect execution should also
+be mentioned (Permute doesn't have any).
+
+@item --TODO
+@itemx -t
+@opindex --TODO
+@opindex -t
+@cindex traditional
+@cindex modern
+Output the TODO greeting message @samp{permute, world}.
+
+@item --version
+@itemx -v
+@opindex --version
+@opindex -v
+Print the version number and licensing information of Permute on
+standard output and then exit successfully.
+
+@end table
+
+If more than one of an option (@option{-g},
+@option{-t}, and its long-named equivalent) is specified, whichever
+comes last takes precedence.
+
+
+@node Reporting bugs
+@chapter Reporting bugs
+
+@cindex bug reporting
+@cindex problems
+@cindex reporting bugs
+
+To report bugs, suggest enhancements or otherwise discuss Permute,
+please send electronic mail to @email{bug-permute@@gnu.org}.
+
+@cindex checklist for bug reports
+For bug reports, please include enough information for the maintainers
+to reproduce the problem.  Generally speaking, that means:
+
+@itemize @bullet
+@item The version numbers of Permute (which you can find by running
+      @w{@samp{permute --version}}) and any other program(s) or
+      file(s) involved.
+@item Hardware and operating system names and versions.
+@item The contents of any input files necessary to reproduce the bug.
+@item The expected behavior and/or output.
+@item A description of the problem and samples of any erroneous output.
+@item If you compiled it yourself, any Options you gave to @command{configure} other than specifying installation directories.
+@item Anything else that you think would be helpful.
+@end itemize
+
+When in doubt whether something is needed or not, include it.  It's
+better to include too much than to leave out something important.
+
+@cindex patches, contributing
+Patches are welcome; if possible, please make them with @samp{@w{diff
+-c}} (@pxref{Top,, Overview, diff, Comparing and Merging Files}) and
+include @file{ChangeLog} entries (@pxref{Change Log,,, emacs, The GNU
+Emacs Manual}).  Please follow the existing coding style.
+
+
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
+
+
+
+@node Concept index
+@unnumbered Concept index
+
+@printindex cp
+
+@bye

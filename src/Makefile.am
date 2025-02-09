@@ -18,7 +18,9 @@ endif
 #add header files
 noinst_HEADERS = permute.h gitversion.h ../config.h
 
-AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS) -DLOCALEDIR=$(localedir_c_make)
+localedir = $(datadir)/locale
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS) -DLOCALEDIR=\"$(localedir)\"
 AM_CXXFLAGS = -W -Wall -fmessage-length=0
 
 	

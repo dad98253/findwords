@@ -5,74 +5,89 @@
 
 ACLOCAL_AMFLAGS = -I m4 --install
 
-# Generate the ChangeLog from git history.
-gen_start_date = 2025-01-01 00:00:00 UTC
-.PHONY: gen-ChangeLog
-gen-ChangeLog:
-	if test -d $(top_srcdir)/.git; then \
-	  $(top_srcdir)/build-aux/gitlog-to-changelog \
-	    --since='$(gen_start_date)' > $(distdir)/cl-t \
-	    && rm -f $(distdir)/ChangeLog \
-	    && mv $(distdir)/cl-t $(distdir)/ChangeLog; \
+AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS) -Ilib -I$(top_srcdir)/lib -Isrc -I$(top_srcdir)/src
+AM_CXXFLAGS = -W -Wall -fmessage-length=0
+
+# Additional files to distribute.
+EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
+	build-aux/Makefile.in \
+	build-aux/git-version-gen \
+	build-aux/gitlog-to-changelog \
+	man/permute.x \
+	dodeb.sh \
+	README.md \
+	BUILD \
+	gengitver.sh \
+	tests/m4/atenv.m4
+	
+# Subdirectories to descend into.
+SUBDIRS= src tests man po
+
+CLEANFILES =
+MAINTAINERCLEANFILES =
+
+noinst_LIBRARIES =
+MOSTLYCLEANFILES =
+MOSTLYCLEANDIRS =
+BUILT_SOURCES =
+
+LOG_COMPILER = $(SHELL)
+
+TESTS_ENVIRONMENT = \
+  top_srcdir=$(top_srcdir) \
+  PATH=.$(PATH_SEPARATOR)$(PATH_SEPARATOR)$$PATH \
+  PERMUTE=`echo permute | sed '$(transform)'`; \
+  export PERMUTE PATH top_srcdir;
+
+# Verify that all source files using _() are listed in po/POTFILES.in.
+# The idea is to run this before making pretests, as well as official
+# releases, so that translators will be sure to have all the messages.
+# (From coreutils.)
+po-check:
+	if test -f po/POTFILES.in; then					\
+	  grep -E -v '^(#|$$)' po/POTFILES.in				\
+	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
+	  files=;							\
+	  for file in $$($(CVS_LIST_EXCEPT)) `find * -name '*.[ch]'`; do \
+	    case $$file in						\
+	    gnulib/* | man/*) continue;;				\
+	    esac;							\
+	    case $$file in						\
+	    *.[ch])							\
+	      base=`expr " $$file" : ' \(.*\)\..'`;			\
+	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
+	    esac;							\
+	    files="$$files $$file";					\
+	  done;								\
+	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files		\
+	    | sort -u > $@-2;						\
+	  diff -u $@-1 $@-2 || exit 1;					\
+	  rm -f $@-1 $@-2;						\
 	fi
 
-# Dummy rule, to pacify automake "gnu" strictness and allow a clean
-# bootstrap.  Creates a dummy ChangeLog (unless one is already present,
-# that will be overridden with a proper one at distribution time.
-ChangeLog:
-	@echo dummy > $@
+#include $(top_srcdir)/lib/local.mk
+include $(top_srcdir)/doc/local.mk
 
-#   Version string management.  There are two files to be aware of:
-#
-#   .tarball-version - present only in a distribution tarball, and not in
-#   a checked-out repository.  Created with contents that were learned at
-#   the last time autoconf was run, and used by git-version-gen.  Must not
-#   be present in either $(srcdir) or $(builddir) for git-version-gen to
-#   give accurate answers during normal development with a checked out tree,
-#   but must be present in a tarball when there is no version control system.
-#   Therefore, it cannot be used in any dependencies.  GNUmakefile has
-#   hooks to force a reconfigure at distribution time to get the value
-#   correct, without penalizing normal development with extra reconfigures.
-#
-#   .version - present in a checked-out repository and in a distribution
-#   tarball.  At least as current as the most recent .tarball-version
-#   creation.  Usable in dependencies, particularly for files that don't
-#   want to depend on config.h but do want to track version changes.
+dist-hook: gen-ChangeLog
+	chmod u+w $(distdir)/$(man_MANS)
 
-BUILT_SOURCES = $(top_srcdir)/.version
-$(top_srcdir)/.version:
-	echo '$(VERSION)' > $@-t
-	mv $@-t $@
-
-# Arrange so that .tarball-version appears only in distribution tarballs,
-# never in a checked-out repository.
-dist-hook:
-	echo '$(VERSION)' > $(distdir)/.tarball-version
+gen_start_date = 2011-12-17
+.PHONY: gen-ChangeLog
+gen-ChangeLog:
+	$(AM_V_GEN)if test -d .git; then				\
+	  log_fix="$(srcdir)/build-aux/git-log-fix";			\
+	  test -e "$$log_fix"						\
+	    && amend_git_log="--amend=$$log_fix"			\
+	    || amend_git_log=;						\
+	  $(top_srcdir)/build-aux/gitlog-to-changelog			\
+	    $$amend_git_log --since=$(gen_start_date) > $(distdir)/cl-t && \
+	    { rm -f $(distdir)/ChangeLog &&				\
+	      mv $(distdir)/cl-t $(distdir)/ChangeLog; }		\
+	fi
 
 
-SUBDIRS=. src tests man po
 
 
-EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
-	     build-aux/Makefile.in \
-	     build-aux/git-version-gen \
-	     build-aux/gitlog-to-changelog \
-	     man/Makefile.am \
-	     dodeb.sh \
-	     README.md \
-	     BUILD \
-	     gengitver.sh \
-             tests/m4/atenv.m4
-	
-
-LIBTOOL_DEPS = @LIBTOOL_DEPS@
-libtool: $(LIBTOOL_DEPS)
-	$(SHELL) ./config.status libtool
-
-
-@GENERATE_CHANGELOG_RULES@
-  CHANGELOG_START = origin/main
-  dist-hook: dist-ChangeLog
 
 distclean-local:
 	@rm -r autom4te.cache/
@@ -84,7 +99,5 @@ help:
 	-@echo "make distclean          --> delete auto tools products"
 	-@echo "make dist               --> build distribution package"
 
-AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS)
-AM_CXXFLAGS = -W -Wall -fmessage-length=0
 
 	

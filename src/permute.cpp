@@ -15,12 +15,12 @@
 #include <getopt.h>
 #include <stdlib.h>
 #include <locale.h>
-#include <libintl.h>
 
 #include "../config.h"
 #define IN_MAIN
 #include "permute.h"
 #include "gitversion.h"
+#include "gettext.h"
 
 #define _(String) gettext(String)
 
@@ -56,7 +56,8 @@ int main( int argc, char **argv ) {
 #endif
 
 //      setlocale (LC_ALL, "en_US.UTF-8");
-     CurrentLocale = setlocale (LC_ALL, "ms_MY.UTF-8");
+//     CurrentLocale = setlocale (LC_ALL, "ms_MY.UTF-8");
+     CurrentLocale = setlocale (LC_ALL, "");
 #ifdef DEBUG
      if (CurrentLocale) {
              printf("locale set to %s\n",CurrentLocale);
@@ -91,11 +92,11 @@ int main( int argc, char **argv ) {
         static struct option long_options[] = {
             {"min-word-size",  required_argument, 0, 'm'},
 			{"help",  no_argument, 0, '?'},
-			{"version",  no_argument, 0, '?'},
+			{"version",  no_argument, 0, 'v'},
             {0,         0,                 0,  0 }
         };
 
-        c = getopt_long(argc, argv, "m:?",
+        c = getopt_long(argc, argv, "m:?v",
                         long_options, &option_index);
         if (c == -1)
             break;
@@ -117,12 +118,24 @@ int main( int argc, char **argv ) {
             break;
 
         case '?':
+            fprintf(stderr, _("Usage: %s [OPTION]... [STRING]\n"), argv[0]);
+            fprintf(stderr, _("Find the permutations of a string.\n"));
+			fprintf(stderr, _("  -m, --min-word-size=N    the minimum size of a derived word\n"));
+			fprintf(stderr, _("  -x, --max-word-size=X    the maximum size of a derived word\n"));
+			fprintf(stderr, _("  -?, --help               display this help and exit\n"));
+			fprintf(stderr, _("  -v, --version            output version information and exit\n"));
+			fprintf(stderr, _("  STRING                   the string of characters to be permuted\n"));               		                        
+            fprintf(stderr, _("       default for N = 2\n"));
+            fprintf(stderr, _("       default for X = length of STRING\n"));
+            fprintf(stderr, _("       default for STRING = \"ADOB\"\n"));
+            fprintf(stderr, _("       to find the permutations of STRING taken M at a time (i.e., P(STRING,M))\n"));
+            fprintf(stderr, _("       enter: permute -m M -x M STRING\n"));
+            exit(EXIT_SUCCESS);
+            break;
+
+        case 'v':
             fprintf(stderr, _("%s version %s, gittag %s\n\n"), argv[0],VERSION,gittag);
-            fprintf(stderr, _("Usage: %s [-m,--min-word-size n] [string]\n"), argv[0]);
-            fprintf(stderr, _("       finds all of the permutations of a string that are more that n characters in length.\n"));
-            fprintf(stderr, _("       default for n = 2\n"));
-            fprintf(stderr, _("       default for string = \"ADOB\"\n"));
-            exit(EXIT_FAILURE);
+            exit(EXIT_SUCCESS);
             break;
 
         default:
