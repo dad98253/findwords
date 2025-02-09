@@ -41,7 +41,6 @@ therefore all delay/time values must be integers.
 EOF
 }
 
-
 # Options.
 while getopts ":t:i:gh" option; do
         case "$option" in
@@ -52,14 +51,15 @@ while getopts ":t:i:gh" option; do
         esac
 done
 shift $((OPTIND - 1))
-
-# $# should be exactly 1 (the input file to execute),
-if (($# != 1 || timeout <= 0 || interval <= 0)); then
+# $# should be exactly 3 (the test name, permute arguments, and input file name)
+if (( ($# != 3 && $# != 2 ) || timeout <= 0 || interval <= 0 )); then
         printUsage
         exit 1
 fi
 
-option=$1
+option1=$1
+option2=$2
+option3=$3
 declare -i -x ti=timeout
 declare -i -x numfailed=0
 
@@ -82,9 +82,14 @@ echo "$1 $v is starting"
 #ddd ../bin/permute
 #../../../bin/permute >$1.stdout 2>$1.stderr
 #/usr/local/bin/permute >$1.stdout 2>$1.stderr
-command=$(head -n 1 $1.cmd)
+#command=$(head -n 1 $1.cmd)
+if [ $# -eq 3 ]; then
+	command="../../../bin/permute $2 <$3 >$1.stdout 2>$1.stderr"
+else
+	command="../../../bin/permute $2 >$1.stdout 2>$1.stderr"
+fi
 echo command = $command
-cat $1.inp | eval "$command"
+eval "$command"
 
 if [[ $GenerateSums -eq 1 ]]; then
 	/usr/bin/logger "generating new checksums for $1 using testrunner.inp.sh from $PWD"
@@ -120,7 +125,7 @@ fi
 
 
 # fire off job
-runjob $option
+runjob $option1 $option2 $option3
 
 # if the job failed, return exit 1 to the calling routine
 if (($? == 0)); then

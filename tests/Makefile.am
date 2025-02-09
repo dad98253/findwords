@@ -33,8 +33,7 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 TESTSUITES_SRC = $(srcdir)/testsuite.at
 
 EXTRA_DIST = $(TESTSUITES_SRC) $(srcdir)/package.m4 $(TESTSUITE) $(INSTTESTSUITE) atlocal.in \
-              testrunner.inp.sh \
-              test1.inp test1.inp.stdout.O0.sha1 test1.inp.stderr.O0.sha1 test1.inp.shalog.O0.sha1
+              testrunner.inp.sh
 
 TESTSUITE = $(srcdir)/testsuite
 

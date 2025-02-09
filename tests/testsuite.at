@@ -20,7 +20,7 @@ AT_BANNER([simple argument tests])
 AT_SETUP([test defaults])
 AT_KEYWORDS([defaults])
 AT_CAPTURE_FILE($(testsubdir)/fail.log[])
-AT_CHECK([testrunner.inp.sh test1], [], [ignore-nolog], [ignore-nolog])
+AT_CHECK([testrunner.inp.sh test1 "" /dev/null], [], [ignore-nolog], [ignore-nolog])
 AT_CLEANUP
 
 AT_SETUP([--help])
