@@ -113,3 +113,4 @@ permute*.tar.gz
 *.gmo
 src/.dirstamp
 po/stamp-po
+doc/.dirstamp
