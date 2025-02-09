@@ -18,5 +18,3 @@
 
 info_TEXINFOS = doc/permute.texi
 
-doc_permute_TEXINFOS = \
-  doc/fdl.texi
