@@ -12,33 +12,48 @@
 @c %**end of header
 
 @copying
-This manual is for Permute (version @value{VERSION}, @value{UPDATED}),
-which prints every permutation of a string provided by the user.
-
 Copyright @copyright{} 2025 John Kuras
 
 @quotation
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3 or
-any later version published by the Free Software Foundation; with no
-Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
-Texts.  A copy of the license is included in the section entitled
-``GNU Free Documentation License''.
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>
 @end quotation
 @end copying
 @c If your manual is published on paper by the FSF, it should include
 @c the standard FSF Front-Cover and Back-Cover Texts, as given in
 @c maintain.texi.
 
-@dircategory Basics
+@dircategory Math
 @direntry
-* Permute: (permute).               TODO.
+* Permute: (permute).               Finds the permutations of a string.
 @end direntry
 
 @titlepage
 @title Permute
 @subtitle for version @value{VERSION}, @value{UPDATED}
-@author Permute Developer (@email{bug-permute@@gnu.org})
+@author John Kuras (@email{w7og@@yahoo.com})
 @page
 @vskip 0pt plus 1filll
 @insertcopying
@@ -60,7 +75,7 @@ which prints every permutation of a string provided by the user.
 * Sample output::	Sample output from @command{permute}.
 * Invoking permute::	How to run @command{permute}.
 * Reporting bugs::	Sending bug reports and feature suggestions.
-* GNU Free Documentation License:: Copying and sharing this documentation.
+* Free Documentation License:: Copying and sharing the application documentation.
 * Concept index::	Index of concepts.
 @end menu
 
@@ -71,94 +86,15 @@ which prints every permutation of a string provided by the user.
 @cindex greetings
 @cindex overview
 
-The GNU @command{permute} program
-(@url{https://www.gnu.org/software/TBD/}) finds every permutation of a string..
-It allows nonmathematitions to use a classic computer
-algorithm which would otherwise be unavailable to them.
+The @command{permute} program finds the n! permutations of the characters
+contained in a string.
+It allows non-mathematicians to use a classic computer
+algorithm which is useful in probability and game theory simulations.
 
 @cindex joke, not
 Not to spoil the joke, but of course the practical purpose of
 Permute is to serve as a tool that can be used to cheat at certain word
-puzzels.
-
-@cindex coding standards
-@cindex maintainer standards
-@cindex standards, coding
-@cindex standards, maintainer
-First, Permute follows the Kuras coding standards
-(@pxref{Top,,Preface,standards,Kuras Coding Standards}) and maintainer standards (@pxref{Top,,Preface,maintain, Information for
-Permute Maintainers}).  These are the basic documents which all Kuras
-packages should adhere to.
-
-The Permute package also implements recommended development practices
-not embodied in the standards, using GNU packages and features:
-
-@itemize @bullet
-@item
-@cindex Automake
-@cindex Autoconf
-It uses Automake (@pxref{Top,,Introduction,automake,GNU Automake}) and
-hence also Autoconf (@pxref{Top,,Introduction,autoconf,GNU Autoconf})
-for configuration.
-
-@item
-@cindex Gnulib
-@cindex @command{srclist-update} script
-@cindex @file{README-dev} source file
-It uses Gnulib (@pxref{Top,,Introduction,gnulib,GNU Gnulib}) to enhance
-portability and avoid duplication of common sources.  Both
-@code{gnulib-tool} and @code{srclist-update} are used, for purposes of
-example.  See the @file{README-dev} file in the distribution.
-
-@item
-@cindex Gettext
-GNU Gettext (@pxref{Top,,Introduction,gettext,GNU Gettext}) is used
-for internationalization support.  Permute's messages have been translated
-into many languages.
-
-@item
-@opindex --help
-Internally, Permute uses the GNU @code{getopt_long} function
-(@pxref{Getopt Long Options,,,libc,GNU C Library}) to parse options,
-thus supporting GNU-style long options such as @option{--help}.
-
-@item
-@cindex Help2man
-The Permute Man page is generated with GNU @code{help2man}
-(@pxref{Top,,Overview,help2man,GNU @code{help2man}}) from the
-@option{--help} output.  This relieves the maintainers from the burden
-of updating separate man documentation, yet provides a reasonable
-overview for man devotees.
-
-@item
-@cindex Texinfo
-Finally, Texinfo (@pxref{Top,,Introduction,texinfo,Texinfo}) is the
-documentation format for this manual.  It supports output in Info,
-HTML, PDF, DVI, plain text, XML, and other formats.
-
-@end itemize
-
-Permute is implemented in C@. plus a subset of c++ extensions.  The GNU Gettext distribution contains examples in many other programming languages; see the
-Gettext home page at @url{https://www.gnu.org/software/gettext/}.
-
-@cindex @file{Makefile.am} targets
-The top-level @file{Makefile.am} in Permute also contains a few special
-targets for other projects to adapt as desired:
-
-@table @code
-@item diff
-Make a diff from the previous release, assuming the current tarball is
-in the current tarball.
-
-@item po-check
-Verify that all source files using @code{_()} are included for
-translation in @file{po/POTFILES.in}, so translators will have all the
-messages.
-
-@item wwwdoc
-Sample procedure for updating the manual on the a web site, in this
-case @url{https://www.TODO/software/permute/manual/}.
-@end table
+puzzles. (see examples)
 
 @cindex author
 @cindex Kuras, John
@@ -172,22 +108,62 @@ Permute was written by @w{dad} (John Kuras)
 
 Here are some examples of running Permute.
 
-This is the output of the command @samp{permute}:
+This is the output of the command @samp{permute -m 2 ABC}:
 
 @example
-Permute, TODO!
+ finding all of the permutations of ABC that are more than 2 characters long
+ABC
+ACB
+BAC
+BCA
+CBA
+CAB
 @end example
 
-This is the output of the command @samp{permute --TODO}:
+The characters contained in the input string are not checked for duplicates.
+Thus, if two identical characters are in the string, the algorithm will treat
+each instance of the character as a separate member of the set. This will result
+in duplicate words in the output:
+This is the output of the command @samp{permute -m 2 ABA}:
 
 @example
-permute, TODO
+ finding all of the permutations of ABA that are more than 2 characters long
+ABA
+AAB
+BAA
+BAA
+ABA
+AAB
 @end example
 
-This is the output of the command @samp{permute --TODO=hi}:
+If such behavior is undesirable, the output may be piped through the unix sort
+and uniq commands. In addition, the header line that permute outputs is written 
+to stderr. Thus, it can be eliminated by redirecting stderr:
+This is the output of the command @samp{permute ABA -m 2 2>/dev/null | sort | uniq}:
 
 @example
-TODO
+AAB
+ABA
+BAA
+@end example
+
+If you are only interested in character permutations that form words contained
+in your default language, you may spell check the results:
+This is the output of the command @samp{permute FFERO |sort|uniq>in.txt ; comm -23 in.txt <(aspell list < in.txt) 2>/dev/null}:
+
+@example
+ finding all of the permutations of FFERO that are more than 2 characters long
+EFF
+FER
+FOE
+FOR
+FORE
+FRO
+OFF
+OFFER
+ORE
+REF
+ROE
 @end example
 
 
@@ -202,42 +178,27 @@ TODO
 The format for running the @command{permute} program is:
 
 @example
-permute @var{option} @dots{}
+permute [@var{option}] @dots{} [ARGUMENT]
 @end example
 
-With no options, @command{permute} prints the greeting @samp{TODO!}.
+With no options or argument, @command{permute} prints the the permutations of the
+string @samp{ADOB} that are 3 characters long.
 
 @command{permute} supports the following options:
 
 @table @option
-@item --TODO=@var{text}
-@itemx -g @var{text}
-@opindex --TODO
-@opindex -g
-Output @var{text} instead of the default TODO.
+@item --min-word-size=@var{N}
+@itemx -m @var{N}
+@opindex --min-word-size
+@opindex -m
+Ignore all outputs that are less than or equal to  @var{N} N in length (default 2).
 
 @item --help
-@itemx -h
+@itemx -?
 @opindex --help
-@opindex -h
+@opindex -?
 Print an informative help message on standard output and exit
 successfully.
-
-@cindex environment variables, help for
-@c This comment prevents `make syntax-check' from diagnosing a doubled word "for\nFor"
-For the @option{--help} output of linux programs, it's strongly
-encouraged to include a brief (one or two sentences) description of
-what the program does, as well as the synopsis of how to run the
-program.  Any environment variables which affect execution should also
-be mentioned (Permute doesn't have any).
-
-@item --TODO
-@itemx -t
-@opindex --TODO
-@opindex -t
-@cindex traditional
-@cindex modern
-Output the TODO greeting message @samp{permute, world}.
 
 @item --version
 @itemx -v
@@ -245,6 +206,30 @@ Output the TODO greeting message @samp{permute, world}.
 @opindex -v
 Print the version number and licensing information of Permute on
 standard output and then exit successfully.
+
+@item ARGUMENT
+@opindex ARGUMENT
+@command{permute} takes one (optional) argument: the string of characters
+to be permuted. The string may contain any printable ASCII character.
+
+Notes:
+
+The number of permutations of the characters in the string (i.e., the
+number of lines of output) is n!, where n is the number of characters in the
+string). Thus, the size of the out grows quickly with increasing string length.
+There is a hard coded limit on the length of the input string of 15 characters.
+On an Intel i5 processor from 2016, it takes permute 34 cpu seconds and 35 seconds wall
+time to find the permutations of a 12 character string. This implies that it would take about 27
+hours to find the permutations of a length 15 string. If a user should need to
+use longer strings, download the source and change the definition of MAXSETSIZE.
+
+The application is not multi-threaded. However, the computation in the algorithm
+is roughly equivalent to the cpu time required to do the output. Therefore, large
+problems will likely fully utilize the equivalent of two cores.
+
+The memory requirement for the algorithm is roughly O(n**2)/2, where n is the length of the string. Thus, even for a
+string of length 15, it should require no where near the amount of RAM installed in
+modern systems.
 
 @end table
 
@@ -261,7 +246,7 @@ comes last takes precedence.
 @cindex reporting bugs
 
 To report bugs, suggest enhancements or otherwise discuss Permute,
-please send electronic mail to @email{bug-permute@@gnu.org}.
+please send electronic mail to @email{w7og@@yahoo.com}.
 
 @cindex checklist for bug reports
 For bug reports, please include enough information for the maintainers
@@ -283,15 +268,45 @@ When in doubt whether something is needed or not, include it.  It's
 better to include too much than to leave out something important.
 
 @cindex patches, contributing
-Patches are welcome; if possible, please make them with @samp{@w{diff
--c}} (@pxref{Top,, Overview, diff, Comparing and Merging Files}) and
-include @file{ChangeLog} entries (@pxref{Change Log,,, emacs, The GNU
-Emacs Manual}).  Please follow the existing coding style.
+Patches are welcome; if possible, please make them with @samp{@w{diff -c}}
+and include @file{ChangeLog} entries.  Please follow the existing
+coding style.
 
 
-@node GNU Free Documentation License
-@appendix GNU Free Documentation License
+@node Free Documentation License
+@appendix Permute Free Documentation License
 
+@quotation
+Note: Some of the C source in the permute application is based on AI
+generated code. As of 2025, the copyright law regarding AI code is
+being litigated. Should the law change, the copyright of the source
+and the license that follows may become invalid.
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>
+@end quotation
 
 
 @node Concept index
