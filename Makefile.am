@@ -9,7 +9,7 @@ AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS) -Ilib -I$(top_srcdir)/lib -Isrc -I$(
 AM_CXXFLAGS = -W -Wall -fmessage-length=0
 
 # Additional files to distribute.
-EXTRA_DIST = $(top_srcdir)/.version 
+EXTRA_DIST = $(top_srcdir)/.version \
 	m4/Makefile.in \
 	build-aux/Makefile.in \
 	build-aux/git-version-gen \

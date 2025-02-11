@@ -16,7 +16,7 @@ __top_builddir__bin_permute_LDFLAGS = -Wl,-Map,loadmap.txt
 endif
 
 #add header files
-noinst_HEADERS = permute.h gitversion.h ../config.h
+noinst_HEADERS = permute.h gitversion.h ../config.h gettext.h
 
 localedir = $(datadir)/locale
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
