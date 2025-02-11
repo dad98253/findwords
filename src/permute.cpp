@@ -24,12 +24,14 @@
 
 #define _(String) gettext(String)
 
-void FindPermutations(char *str, int n, int start, int len);
+void FindPermutations(char *str, int n, int r, int start, char *result);
 
 int main( int argc, char **argv ) {
 
     char str[] = "ADOB"; // default string (used for debug)
     char * str2;
+    char * str3;
+    char * result;
     int n; // Take permutations of size n
     int c;
     char * CurrentLocale = NULL;
@@ -150,9 +152,21 @@ int main( int argc, char **argv ) {
 	}
 
 	n = strlen(str2);
-	fprintf(stderr,_(" finding all of the permutations of %s that are more than %i characters long\n"),str2,minWordSize);
-    FindPermutations(str2, n, 0, 0);
+	if ( n > MAXSETSIZE ) {
+		fprintf(stderr,_(" ///// ERROR : The length of your string is %s.\n               The maximum allowed is %s.\n"), n , MAXSETSIZE );
+		exit(4);
+	}
+	str3 = (char*)malloc(n+2);
+	result = (char*)malloc(n+2);
+	fprintf(stderr,_(" finding all of the permutations of %s that are more than %lu characters long\n"),str2,minWordSize);
+	// find all permutations taken r at a time where r goes from 1 to n
+    for (int r=1;r<n+1;r++){
+      strcpy(str3,str2);
+      FindPermutations(str3, n, r, 0, result);
+    }
 
+    free(str3);
+    free(result);
     return 0;
 }
 

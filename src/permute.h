@@ -16,8 +16,9 @@
 #define INT2
 #endif
 
+#define MAXSETSIZE	15
 
-EXTERN int minWordSize INT2;
+EXTERN long unsigned int minWordSize INT2;
 
 
 #endif /* PERMUTE_H_ */
