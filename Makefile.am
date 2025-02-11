@@ -9,7 +9,8 @@ AM_CPPFLAGS = $(DEPS_CFLAGS) $(MY_CPPFLAGS) -Ilib -I$(top_srcdir)/lib -Isrc -I$(
 AM_CXXFLAGS = -W -Wall -fmessage-length=0
 
 # Additional files to distribute.
-EXTRA_DIST = $(top_srcdir)/.version m4/Makefile.in \
+EXTRA_DIST = $(top_srcdir)/.version 
+	m4/Makefile.in \
 	build-aux/Makefile.in \
 	build-aux/git-version-gen \
 	build-aux/gitlog-to-changelog \
@@ -29,7 +30,11 @@ MAINTAINERCLEANFILES =
 noinst_LIBRARIES =
 MOSTLYCLEANFILES =
 MOSTLYCLEANDIRS =
-BUILT_SOURCES =
+BUILT_SOURCES = $(top_srcdir)/.version
+
+$(top_srcdir)/.version:
+	echo '$(VERSION)' > $@-t
+	mv $@-t $@
 
 LOG_COMPILER = $(SHELL)
 
@@ -70,6 +75,7 @@ include $(top_srcdir)/doc/local.mk
 
 dist-hook: gen-ChangeLog
 	chmod u+w $(distdir)/$(man_MANS)
+	echo '$(VERSION)' > $(distdir)/.tarball-version
 
 gen_start_date = 2011-12-17
 .PHONY: gen-ChangeLog
