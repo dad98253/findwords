@@ -52,8 +52,10 @@ while getopts ":t:i:gh" option; do
 done
 shift $((OPTIND - 1))
 # $# should be exactly 3 (the test name, permute arguments, and input file name)
+logger number args = $#
 if (( ($# != 3 && $# != 2 ) || timeout <= 0 || interval <= 0 )); then
         printUsage
+        logger bad number of args passed to testrunner.inp.sh
         exit 1
 fi
 
@@ -93,17 +95,11 @@ eval "$command"
 
 if [[ $GenerateSums -eq 1 ]]; then
 	/usr/bin/logger "generating new checksums for $1 using testrunner.inp.sh from $PWD"
-#cat $1.out    | sha1sum -c $1.out.O0.sha1
-	cat $1.stdout  | sha1sum > ../../$1.stdout.O0.sha1 2>&1
-	cat $1.stderr  | sha1sum > ../../$1.stderr.O0.sha1 2>&1
-#	find $1.dir -type f -exec sha1sum {} \; | sort -k 2 | sha1sum > ../../$1.dir.O0.sha1 2>&1
 fi
-#cat $1.out    | sha1sum -c $1.out.O0.sha1
 /usr/bin/logger "validating checksums for $1"
 rm $1.shalog
-cat $1.stdout  | sha1sum -c ../../$1.stdout.O0.sha1 >> $1.shalog 2>&1
-cat $1.stderr  | sha1sum -c ../../$1.stderr.O0.sha1 >> $1.shalog 2>&1
-#find $1.dir -type f -exec sha1sum {} \; | sort -k 2 | sha1sum -c ../../$1.dir.O0.sha1 >> $1.shalog 2>&1
+cat $1.stdout  | sha1sum  >> $1.shalog 2>&1
+cat $1.stderr  | sha1sum  >> $1.shalog 2>&1
 if [[ $GenerateSums -eq 1 ]]; then
 	cat $1.shalog  | sha1sum > ../../$1.shalog.O0.sha1
 fi
@@ -122,7 +118,6 @@ else
 fi
 }
 #----------------------------------------------------------------------------------
-
 
 # fire off job
 runjob $option1 $option2 $option3
