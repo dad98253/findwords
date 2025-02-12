@@ -129,3 +129,8 @@ po/insert-header.sin
 po/quot.sed
 po/remove-potcdate.sin
 /locales
+doc/permute.texi.bak
+po/Makefile.in.in
+po/Makevars.template
+po/remove-potcdate.sed
+
