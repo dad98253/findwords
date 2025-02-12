@@ -34,9 +34,13 @@ int main( int argc, char **argv ) {
     char * result;
     int n; // Take permutations of size n
     int c;
+    int tempint;
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
     char * CurrentLocale = NULL;
     char * CurrentDirnam = NULL;
     char * CurrentDomain = NULL;
+#pragma GCC diagnostic pop
 
     const char* env_var = getenv("LANGUAGE");
      if (env_var != NULL) {
@@ -93,12 +97,13 @@ int main( int argc, char **argv ) {
         int option_index = 0;
         static struct option long_options[] = {
             {"min-word-size",  required_argument, 0, 'm'},
+            {"max-word-size",  required_argument, 0, 'x'},
 			{"help",  no_argument, 0, '?'},
 			{"version",  no_argument, 0, 'v'},
             {0,         0,                 0,  0 }
         };
 
-        c = getopt_long(argc, argv, "m:?v",
+        c = getopt_long(argc, argv, "m:x:?v",
                         long_options, &option_index);
         if (c == -1)
             break;
@@ -112,10 +117,25 @@ int main( int argc, char **argv ) {
             break;
 
         case 'm':
-            minWordSize = atoi((const char *)optarg);
-            if ( minWordSize < 0 ) {
-            	fprintf(stderr,_(" warning : the minimum word size cannot be negative, using \"0\"\n"));
-				minWordSize = 0;
+            tempint = atoi((const char *)optarg);
+            if ( tempint < 0 ) {
+            	fprintf(stderr,_(" warning : the minimum word size cannot be negative, using \"1\"\n"));
+		minWordSize = 1;
+            } else {
+                minWordSize = tempint;
+            }
+            break;
+
+        case 'x':
+            tempint = atoi((const char *)optarg);
+            if ( tempint > MAXSETSIZE ) {
+            	fprintf(stderr,_(" warning : the maximum word size cannot be greater than \"%u\". Using \"%u\".\n"),MAXSETSIZE,MAXSETSIZE);
+		maxWordSize = MAXSETSIZE;
+            } else if ( tempint < 0 ) {
+                fprintf(stderr,_(" warning : the maximum word size cannot be negative, using \"1\"\n"));
+                maxWordSize = 1;
+	    } else {
+                maxWordSize = tempint;
             }
             break;
 
@@ -127,7 +147,7 @@ int main( int argc, char **argv ) {
 			fprintf(stderr, _("  -?, --help               display this help and exit\n"));
 			fprintf(stderr, _("  -v, --version            output version information and exit\n"));
 			fprintf(stderr, _("  STRING                   the string of characters to be permuted\n"));               		                        
-            fprintf(stderr, _("       default for N = 2\n"));
+            fprintf(stderr, _("       default for N = 3\n"));
             fprintf(stderr, _("       default for X = length of STRING\n"));
             fprintf(stderr, _("       default for STRING = \"ADOB\"\n"));
             fprintf(stderr, _("       to find the permutations of STRING taken M at a time (i.e., P(STRING,M))\n"));
@@ -153,14 +173,22 @@ int main( int argc, char **argv ) {
 
 	n = strlen(str2);
 	if ( n > MAXSETSIZE ) {
-		fprintf(stderr,_(" ///// ERROR : The length of your string is %s.\n               The maximum allowed is %s.\n"), n , MAXSETSIZE );
+		fprintf(stderr,_(" ///// ERROR : The length of your string is %u.\n               The maximum allowed is %u.\n"), n , MAXSETSIZE );
 		exit(4);
 	}
 	str3 = (char*)malloc(n+2);
-	result = (char*)malloc(n+2);
-	fprintf(stderr,_(" finding all of the permutations of %s that are more than %lu characters long\n"),str2,minWordSize);
-	// find all permutations taken r at a time where r goes from 1 to n
-    for (int r=1;r<n+1;r++){
+	result = (char*)calloc(n+2,1);
+        if ( n < (int)maxWordSize ) maxWordSize = (long unsigned int)n;
+        
+        // check for min siz greater than max size
+        if ( minWordSize > maxWordSize ) {
+                fprintf(stderr,_(" ///// ERROR : The minimum word size cannot be greater than the maximum word size.\n"));
+                exit(5);		
+	}
+        
+	fprintf(stderr,_(" finding all of the permutations of %s that are between %lu and %lu characters long\n"),str2,minWordSize,maxWordSize);
+	// find all permutations taken r at a time where r goes from minWordSize to maxWordSize
+    for (int r=(int)minWordSize;r<(int)(maxWordSize+1);r++){
       strcpy(str3,str2);
       FindPermutations(str3, n, r, 0, result);
     }

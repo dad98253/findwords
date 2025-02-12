@@ -19,7 +19,7 @@ void swap(char *a, char *b) {
 
 void FindPermutations(char *str, int n, int r, int start, char *result) {
     if (r == 0) {
-    	if ( strlen(result) > minWordSize ) printf("%s\n", result);  // Print the current permutation
+    	printf("%s\n", result);  // Print the current permutation
         return;
     }
 
