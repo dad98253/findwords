@@ -5,6 +5,8 @@
 ##  Copyright (c) 2025 John Kuras
 ##
 
+include ChecksumFiles.inc
+
 MAINTAINERCLEANFILES    = Makefile.in
 
 testsubdir              = testSubDir
@@ -33,7 +35,7 @@ $(srcdir)/package.m4: $(top_srcdir)/configure.ac
 TESTSUITES_SRC = $(srcdir)/testsuite.at
 
 EXTRA_DIST = $(TESTSUITES_SRC) $(srcdir)/package.m4 $(TESTSUITE) $(INSTTESTSUITE) atlocal.in \
-              testrunner.inp.sh
+              testrunner.inp.sh $(CHECKSUMFILES)
 
 TESTSUITE = $(srcdir)/testsuite
 
