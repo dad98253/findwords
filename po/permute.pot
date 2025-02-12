@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: permute 0.2.0.17-b9c8-dirty\n"
 "Report-Msgid-Bugs-To: w7og@yahoo.com\n"
-"POT-Creation-Date: 2025-02-11 13:52-0800\n"
+"POT-Creation-Date: 2025-02-11 18:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,100 +17,119 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/permute.cpp:108
+#: src/permute.cpp:113
 #, c-format
 msgid " option %s"
 msgstr ""
 
-#: src/permute.cpp:117
+#: src/permute.cpp:122
 #, c-format
-msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
-msgstr ""
-
-#: src/permute.cpp:123
-#, c-format
-msgid "Usage: %s [OPTION]... [STRING]\n"
-msgstr ""
-
-#: src/permute.cpp:124
-#, c-format
-msgid "Find the permutations of a string.\n"
-msgstr ""
-
-#: src/permute.cpp:125
-#, c-format
-msgid "  -m, --min-word-size=N    the minimum size of a derived word\n"
-msgstr ""
-
-#: src/permute.cpp:126
-#, c-format
-msgid "  -x, --max-word-size=X    the maximum size of a derived word\n"
-msgstr ""
-
-#: src/permute.cpp:127
-#, c-format
-msgid "  -?, --help               display this help and exit\n"
-msgstr ""
-
-#: src/permute.cpp:128
-#, c-format
-msgid "  -v, --version            output version information and exit\n"
-msgstr ""
-
-#: src/permute.cpp:129
-#, c-format
-msgid "  STRING                   the string of characters to be permuted\n"
-msgstr ""
-
-#: src/permute.cpp:130
-#, c-format
-msgid "       default for N = 2\n"
-msgstr ""
-
-#: src/permute.cpp:131
-#, c-format
-msgid "       default for X = length of STRING\n"
+msgid " warning : the minimum word size cannot be negative, using \"1\"\n"
 msgstr ""
 
 #: src/permute.cpp:132
 #, c-format
+msgid ""
+" warning : the maximum word size cannot be greater than \"%u\". Using "
+"\"%u\".\n"
+msgstr ""
+
+#: src/permute.cpp:135
+#, c-format
+msgid " warning : the maximum word size cannot be negative, using \"1\"\n"
+msgstr ""
+
+#: src/permute.cpp:143
+#, c-format
+msgid "Usage: %s [OPTION]... [STRING]\n"
+msgstr ""
+
+#: src/permute.cpp:144
+#, c-format
+msgid "Find the permutations of a string.\n"
+msgstr ""
+
+#: src/permute.cpp:145
+#, c-format
+msgid "  -m, --min-word-size=N    the minimum size of a derived word\n"
+msgstr ""
+
+#: src/permute.cpp:146
+#, c-format
+msgid "  -x, --max-word-size=X    the maximum size of a derived word\n"
+msgstr ""
+
+#: src/permute.cpp:147
+#, c-format
+msgid "  -?, --help               display this help and exit\n"
+msgstr ""
+
+#: src/permute.cpp:148
+#, c-format
+msgid "  -v, --version            output version information and exit\n"
+msgstr ""
+
+#: src/permute.cpp:149
+#, c-format
+msgid "  STRING                   the string of characters to be permuted\n"
+msgstr ""
+
+#: src/permute.cpp:150
+#, c-format
+msgid "       default for N = 3\n"
+msgstr ""
+
+#: src/permute.cpp:151
+#, c-format
+msgid "       default for X = length of STRING\n"
+msgstr ""
+
+#: src/permute.cpp:152
+#, c-format
 msgid "       default for STRING = \"ADOB\"\n"
 msgstr ""
 
-#: src/permute.cpp:133
+#: src/permute.cpp:153
 #, c-format
 msgid ""
 "       to find the permutations of STRING taken M at a time (i.e., P(STRING,"
 "M))\n"
 msgstr ""
 
-#: src/permute.cpp:134
+#: src/permute.cpp:154
 #, c-format
 msgid "       enter: permute -m M -x M STRING\n"
 msgstr ""
 
-#: src/permute.cpp:139
+#: src/permute.cpp:159
 #, c-format
 msgid ""
 "%s version %s, gittag %s\n"
 "\n"
 msgstr ""
 
-#: src/permute.cpp:144
+#: src/permute.cpp:164
 #, c-format
 msgid " ?? getopt returned character code 0%o ??\n"
 msgstr ""
 
-#: src/permute.cpp:156
+#: src/permute.cpp:176
 #, c-format
 msgid ""
-" ///// ERROR : The length of your string is %s.\n"
-"               The maximum allowed is %s.\n"
+" ///// ERROR : The length of your string is %u.\n"
+"               The maximum allowed is %u.\n"
 msgstr ""
 
-#: src/permute.cpp:161
+#: src/permute.cpp:185
 #, c-format
 msgid ""
-" finding all of the permutations of %s that are more than %lu characters "
-"long\n"
+" ///// ERROR : The minimum word size cannot be greater than the maximum word "
+"size.\n"
+msgstr ""
+
+#: src/permute.cpp:189
+#, c-format
+msgid ""
+" finding all of the permutations of %s that are between %lu and %lu "
+"characters long\n"
 msgstr ""

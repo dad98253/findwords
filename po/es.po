@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: permute 0.2\n"
 "Report-Msgid-Bugs-To: w7og@yahoo.com\n"
-"POT-Creation-Date: 2025-02-11 13:52-0800\n"
+"POT-Creation-Date: 2025-02-11 18:52-0800\n"
 "PO-Revision-Date: 2025-02-04 20:50-0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,69 +18,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/permute.cpp:108
+#: src/permute.cpp:113
 #, c-format
 msgid " option %s"
 msgstr " opción %s"
 
-#: src/permute.cpp:117
-#, c-format
-msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+#: src/permute.cpp:122
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid " warning : the minimum word size cannot be negative, using \"1\"\n"
 msgstr ""
 " advertencia: el tamaño mínimo de palabra no puede ser negativo, se usará "
-"\"0\"\n"
+"\"1\"\n"
 
-#: src/permute.cpp:123
+#: src/permute.cpp:132
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid ""
+" warning : the maximum word size cannot be greater than \"%u\". Using "
+"\"%u\".\n"
+msgstr ""
+" advertencia : El tamaño máximo de la palabra no puede ser mayor que \"%u\". Se usará "
+"\"%u\".\n"
+
+#: src/permute.cpp:135
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid " warning : the maximum word size cannot be negative, using \"1\"\n"
+msgstr ""
+" advertencia: el tamaño mínimo de palabra no puede ser negativo, se usará "
+"\"1\"\n"
+
+#: src/permute.cpp:143
 #, c-format
 msgid "Usage: %s [OPTION]... [STRING]\n"
 msgstr "Uso: %s [OPCIÓN]... [CADENA]\n"
 
-#: src/permute.cpp:124
+#: src/permute.cpp:144
 #, c-format
 msgid "Find the permutations of a string.\n"
 msgstr "Encuentra las permutaciones de una cadena.\n"
 
-#: src/permute.cpp:125
+#: src/permute.cpp:145
 #, c-format
 msgid "  -m, --min-word-size=N    the minimum size of a derived word\n"
 msgstr "  -m, --min-word-size=N    el tamaño mínimo de una palabra derivada\n"
 
-#: src/permute.cpp:126
+#: src/permute.cpp:146
 #, c-format
 msgid "  -x, --max-word-size=X    the maximum size of a derived word\n"
 msgstr "  -x, --max-word-size=X    el tamaño máximo de una palabra derivada\n"
 
-#: src/permute.cpp:127
+#: src/permute.cpp:147
 #, c-format
 msgid "  -?, --help               display this help and exit\n"
 msgstr "  -?, --help               muestra esta ayuda y sale\n"
 
-#: src/permute.cpp:128
+#: src/permute.cpp:148
 #, c-format
 msgid "  -v, --version            output version information and exit\n"
 msgstr "  -v, --version            mostrar información de la versión y salir\n"
 
-#: src/permute.cpp:129
+#: src/permute.cpp:149
 #, c-format
 msgid "  STRING                   the string of characters to be permuted\n"
 msgstr "  CADENA                   la cadena de caracteres que se permutará\n"
 
-#: src/permute.cpp:130
+#: src/permute.cpp:150
 #, fuzzy, c-format
-msgid "       default for N = 2\n"
-msgstr "       predeterminado para n = 2\n"
+msgid "       default for N = 3\n"
+msgstr "       predeterminado para N = 3\n"
 
-#: src/permute.cpp:131
+#: src/permute.cpp:151
 #, fuzzy, c-format
 msgid "       default for X = length of STRING\n"
 msgstr "       predeterminado para X = predeterminado para CADENA\n"
 
-#: src/permute.cpp:132
+#: src/permute.cpp:152
 #, fuzzy, c-format
 msgid "       default for STRING = \"ADOB\"\n"
 msgstr "       valor predeterminado para CADENA = \"ADOB\"\n"
 
-#: src/permute.cpp:133
+#: src/permute.cpp:153
 #, c-format
 msgid ""
 "       to find the permutations of STRING taken M at a time (i.e., P(STRING,"
@@ -89,12 +108,12 @@ msgstr ""
 "       para encontrar las permutaciones de CADENA tomadas de M en M (es "
 "decir, P(CADENA,M))\n"
 
-#: src/permute.cpp:134
+#: src/permute.cpp:154
 #, c-format
 msgid "       enter: permute -m M -x M STRING\n"
-msgstr "       entrar: permuta -m M -x M CADENA\n"
+msgstr "       entrar: permute -m M -x M CADENA\n"
 
-#: src/permute.cpp:139
+#: src/permute.cpp:159
 #, c-format
 msgid ""
 "%s version %s, gittag %s\n"
@@ -103,25 +122,37 @@ msgstr ""
 "%s versión %s, gittag %s\n"
 "\n"
 
-#: src/permute.cpp:144
+#: src/permute.cpp:164
 #, c-format
 msgid " ?? getopt returned character code 0%o ??\n"
 msgstr " ?? getopt devolvió el código de carácter 0%o ??\n"
 
-#: src/permute.cpp:156
-#, c-format
+#: src/permute.cpp:176
+#, fuzzy, c-format
+#| msgid ""
+#| " ///// ERROR : The length of your string is %s.\n"
+#| "               The maximum allowed is %s.\n"
 msgid ""
-" ///// ERROR : The length of your string is %s.\n"
-"               The maximum allowed is %s.\n"
+" ///// ERROR : The length of your string is %u.\n"
+"               The maximum allowed is %u.\n"
 msgstr ""
-" ///// ERROR : La longitud de su cadena es %s.\n"
-"               El máximo permitido es %s.\n"
+" ///// ERROR : La longitud de su cadena es %u.\n"
+"               El máximo permitido es %u.\n"
 
-#: src/permute.cpp:161
+#: src/permute.cpp:185
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid ""
+" ///// ERROR : The minimum word size cannot be greater than the maximum word "
+"size.\n"
+msgstr ""
+" ///// ERROR : El tamaño mínimo de la palabra no puede ser mayor que el tamaño máximo de la palabra.\n"
+
+#: src/permute.cpp:189
 #, fuzzy, c-format
 msgid ""
-" finding all of the permutations of %s that are more than %lu characters "
-"long\n"
+" finding all of the permutations of %s that are between %lu y %lu "
+"characters long\n"
 msgstr ""
-" encontrar todas las permutaciones de %s que tengan más de %i caracteres\n"
-
+" encontrar todas las permutaciones de %s que tienen entre %lu and %lu "
+"caracteres\n"

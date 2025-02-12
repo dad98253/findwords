@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: permute 0.2\n"
 "Report-Msgid-Bugs-To: w7og@yahoo.com\n"
-"POT-Creation-Date: 2025-02-11 13:52-0800\n"
+"POT-Creation-Date: 2025-02-11 18:52-0800\n"
 "PO-Revision-Date: 2025-02-04 20:50-0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,68 +17,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/permute.cpp:108
+#: src/permute.cpp:113
 #, c-format
 msgid " option %s"
 msgstr " pilihan %s"
 
-#: src/permute.cpp:117
-#, c-format
-msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+#: src/permute.cpp:122
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid " warning : the minimum word size cannot be negative, using \"1\"\n"
 msgstr ""
-" amaran : saiz perkataan minimum tidak boleh negatif, menggunakan \"0\"\n"
+" amaran : saiz perkataan minimum tidak boleh negatif, menggunakan \"1\"\n"
 
-#: src/permute.cpp:123
+#: src/permute.cpp:132
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid ""
+" warning : the maximum word size cannot be greater than \"%u\". Using "
+"\"%u\".\n"
+msgstr " amaran : saiz perkataan maksimum tidak boleh lebih besar daripada \"%u\". Menggunakan "
+"\"%u\".\n"
+
+#: src/permute.cpp:135
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid " warning : the maximum word size cannot be negative, using \"1\"\n"
+msgstr ""
+" amaran : saiz perkataan maksimum tidak boleh negatif, menggunakan \"1\"\n"
+
+#: src/permute.cpp:143
 #, c-format
 msgid "Usage: %s [OPTION]... [STRING]\n"
 msgstr "Penggunaan: %s [PILIHAN]... [STRING]\n"
 
-#: src/permute.cpp:124
+#: src/permute.cpp:144
 #, c-format
 msgid "Find the permutations of a string.\n"
 msgstr "Cari permutasi bagi satu rentetan.\n"
 
-#: src/permute.cpp:125
+#: src/permute.cpp:145
 #, c-format
 msgid "  -m, --min-word-size=N    the minimum size of a derived word\n"
 msgstr "  -m, --min-word-size=N    saiz minimum bagi perkataan terbitan\n"
 
-#: src/permute.cpp:126
+#: src/permute.cpp:146
 #, c-format
 msgid "  -x, --max-word-size=X    the maximum size of a derived word\n"
 msgstr "  -x, --max-word-size=X    saiz maksimum bagi perkataan terbitan\n"
 
-#: src/permute.cpp:127
+#: src/permute.cpp:147
 #, c-format
 msgid "  -?, --help               display this help and exit\n"
 msgstr "  -?, --help               paparkan bantuan ini dan keluar\n"
 
-#: src/permute.cpp:128
+#: src/permute.cpp:148
 #, c-format
 msgid "  -v, --version            output version information and exit\n"
 msgstr "  -v, --version            keluarkan maklumat versi dan keluar\n"
 
-#: src/permute.cpp:129
+#: src/permute.cpp:149
 #, c-format
 msgid "  STRING                   the string of characters to be permuted\n"
 msgstr "  STRING                   rentetan aksara yang akan diubah\n"
 
-#: src/permute.cpp:130
+#: src/permute.cpp:150
 #, fuzzy, c-format
-msgid "       default for N = 2\n"
+msgid "       default for N = 3\n"
 msgstr "       lalai untuk n = 2\n"
 
-#: src/permute.cpp:131
+#: src/permute.cpp:151
 #, fuzzy, c-format
 msgid "       default for X = length of STRING\n"
 msgstr "       lalai untuk X = panjang STRING\n"
 
-#: src/permute.cpp:132
+#: src/permute.cpp:152
 #, fuzzy, c-format
 msgid "       default for STRING = \"ADOB\"\n"
 msgstr "       lalai untuk STRING = \"ADOB\"\n"
 
-#: src/permute.cpp:133
+#: src/permute.cpp:153
 #, c-format
 msgid ""
 "       to find the permutations of STRING taken M at a time (i.e., P(STRING,"
@@ -87,12 +104,12 @@ msgstr ""
 "       untuk mencari permutasi STRING yang diambil M pada satu masa (iaitu, "
 "P(STRING,M))\n"
 
-#: src/permute.cpp:134
+#: src/permute.cpp:154
 #, c-format
 msgid "       enter: permute -m M -x M STRING\n"
 msgstr "       masukkan: permute -m M -x M STRING\n"
 
-#: src/permute.cpp:139
+#: src/permute.cpp:159
 #, c-format
 msgid ""
 "%s version %s, gittag %s\n"
@@ -101,27 +118,39 @@ msgstr ""
 "%s versi %s, gittag %s\n"
 "\n"
 
-#: src/permute.cpp:144
+#: src/permute.cpp:164
 #, c-format
 msgid " ?? getopt returned character code 0%o ??\n"
 msgstr " ?? getopt mengembalikan kod watak 0%o ??\n"
 
-#: src/permute.cpp:156
-#, c-format
+#: src/permute.cpp:176
+#, fuzzy, c-format
+#| msgid ""
+#| " ///// ERROR : The length of your string is %s.\n"
+#| "               The maximum allowed is %s.\n"
 msgid ""
-" ///// ERROR : The length of your string is %s.\n"
-"               The maximum allowed is %s.\n"
+" ///// ERROR : The length of your string is %u.\n"
+"               The maximum allowed is %u.\n"
 msgstr ""
-" ///// RALAT : Panjang rentetan anda ialah %s.\n"
-"               Panjang maksimum yang dibenarkan ialah %s.\n"
+" ///// RALAT : Panjang rentetan anda ialah %u.\n"
+"               Panjang maksimum yang dibenarkan ialah %u.\n"
 
-#: src/permute.cpp:161
+#: src/permute.cpp:185
+#, fuzzy, c-format
+#| msgid " warning : the minimum word size cannot be negative, using \"0\"\n"
+msgid ""
+" ///// ERROR : The minimum word size cannot be greater than the maximum word "
+"size.\n"
+msgstr ""
+" ///// RALAT : Saiz perkataan minimum tidak boleh lebih besar daripada saiz perkataan maksimum.\n"
+
+#: src/permute.cpp:189
 #, fuzzy, c-format
 #| msgid ""
 #| " finding all of the permutations of %s that are more than %lu characters "
 #| "long\n"
 msgid ""
-" finding all of the permutations of %s that are more than %lu characters "
-"long\n"
-msgstr " mencari semua permutasi %s yang lebih daripada %i aksara panjang\n"
-
+" finding all of the permutations of %s that are between %lu and %lu "
+"characters long\n"
+msgstr ""
+" mencari semua permutasi %s yang antara %lu dan %lu aksara panjang\n"
