@@ -86,14 +86,14 @@ which prints every permutation of a string provided by the user.
 @cindex greetings
 @cindex overview
 
-The @command{permute} program finds the n! permutations of the characters
+The @command{permute} program finds the permutations of the characters
 contained in a string.
 It allows non-mathematicians to use a classic computer
 algorithm which is useful in probability and game theory simulations.
 
 @cindex joke, not
 Not to spoil the joke, but of course the practical purpose of
-Permute is to serve as a tool that can be used to cheat at certain word
+@command{permute} is to serve as a tool that can be used to cheat at certain word
 puzzles. (see examples)
 
 @cindex author
@@ -108,7 +108,7 @@ Permute was written by @w{dad} (John Kuras)
 
 Here are some examples of running Permute.
 
-This is the output of the command @samp{permute -m 2 ABC}:
+This is the output of the command @samp{permute -m 3 ABC}:
 
 @example
  finding all of the permutations of ABC that are more than 2 characters long
@@ -124,7 +124,7 @@ The characters contained in the input string are not checked for duplicates.
 Thus, if two identical characters are in the string, the algorithm will treat
 each instance of the character as a separate member of the set. This will result
 in duplicate words in the output:
-This is the output of the command @samp{permute -m 2 ABA}:
+This is the output of the command @samp{permute -m 3 ABA}:
 
 @example
  finding all of the permutations of ABA that are more than 2 characters long
@@ -139,13 +139,15 @@ AAB
 If such behavior is undesirable, the output may be piped through the unix sort
 and uniq commands. In addition, the header line that permute outputs is written 
 to stderr. Thus, it can be eliminated by redirecting stderr:
-This is the output of the command @samp{permute ABA -m 2 2>/dev/null | sort | uniq}:
+This is the output of the command @samp{permute ABA -m 3 2>/dev/null | sort | uniq}:
 
 @example
 AAB
 ABA
 BAA
 @end example
+
+@cindex word game cheat
 
 If you are only interested in character permutations that form words contained
 in your default language, you may spell check the results:
@@ -182,7 +184,7 @@ permute [@var{option}] @dots{} [ARGUMENT]
 @end example
 
 With no options or argument, @command{permute} prints the the permutations of the
-string @samp{ADOB} that are 3 characters long.
+string @samp{ADOB} that are 3 or more characters long.
 
 @command{permute} supports the following options:
 
@@ -191,7 +193,14 @@ string @samp{ADOB} that are 3 characters long.
 @itemx -m @var{N}
 @opindex --min-word-size
 @opindex -m
-Ignore all outputs that are less than or equal to  @var{N} N in length (default 2).
+Ignore all outputs that are less than @var{N} characters in length (default 3).
+
+@item --max-word-size=@var{N}
+@itemx -x @var{N}
+@opindex --max-word-size
+@opindex -x
+Ignore all outputs that are greater than @var{N} characters in length (default is the
+length of the string).
 
 @item --help
 @itemx -?
@@ -212,11 +221,13 @@ standard output and then exit successfully.
 @command{permute} takes one (optional) argument: the string of characters
 to be permuted. The string may contain any printable ASCII character.
 
+@end table
+
 Notes:
 
 The number of permutations of the characters in the string (i.e., the
-number of lines of output) is n!, where n is the number of characters in the
-string). Thus, the size of the out grows quickly with increasing string length.
+number of lines of output) is O(n!), where n is the number of characters in the
+string). Thus, the size of the output grows quickly with increasing string length.
 There is a hard coded limit on the length of the input string of 15 characters.
 On an Intel i5 processor from 2016, it takes permute 34 cpu seconds and 35 seconds wall
 time to find the permutations of a 12 character string. This implies that it would take about 27
@@ -227,16 +238,15 @@ The application is not multi-threaded. However, the computation in the algorithm
 is roughly equivalent to the cpu time required to do the output. Therefore, large
 problems will likely fully utilize the equivalent of two cores.
 
-The memory requirement for the algorithm is roughly O(n**2)/2, where n is the length of the string. Thus, even for a
+The memory requirement for the algorithm is roughly O(n**2)/2, where n is the length
+of the string. Thus, even for a
 string of length 15, it should require no where near the amount of RAM installed in
 modern systems.
 
-@end table
-
-If more than one of an option (@option{-g},
-@option{-t}, and its long-named equivalent) is specified, whichever
-comes last takes precedence.
-
+If duplicate numerical options (@option{-m},
+@option{-x}, and their long-named equivalents) are specified, whichever
+comes last takes precedence. If both @option{-?} and @option{-v} (or their long-named equivalents)
+are specified, whichever comes first takes precedence.
 
 @node Reporting bugs
 @chapter Reporting bugs
