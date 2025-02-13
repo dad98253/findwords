@@ -143,7 +143,6 @@ Files:     Makefile.in
            po/en@boldquot.header
            po/en@quot.header
            po/insert-header.sin
-           po/insert-header.sin
            po/quot.sed
            po/remove-potcdate.sin
            po/stamp-po
