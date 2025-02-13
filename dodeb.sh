@@ -15,7 +15,7 @@
 #
 
 export PROGNAM="permute"
-export PVER="0.2"
+export PVER="1.0"
 export BVER="1"
 export BASEBDIR="$HOME/src"
 export ORIGDIR=$(pwd)
