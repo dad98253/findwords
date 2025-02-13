@@ -52,7 +52,6 @@ while getopts ":t:i:gh" option; do
 done
 shift $((OPTIND - 1))
 # $# should be exactly 3 (the test name, permute arguments, and input file name)
-logger number args = $#
 if (( ($# != 3 && $# != 2 ) || timeout <= 0 || interval <= 0 )); then
         printUsage
         logger bad number of args passed to testrunner.inp.sh
