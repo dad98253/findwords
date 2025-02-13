@@ -133,4 +133,5 @@ doc/permute.texi.bak
 po/Makefile.in.in
 po/Makevars.template
 po/remove-potcdate.sed
+po/*.po~
 
