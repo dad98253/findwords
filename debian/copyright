@@ -26,10 +26,6 @@ Files:     .tarball-version
            man/permute.1
            tests/Makefile.am
            tests/testsuite.at
-           tests/test1.inp
-           tests/test1.inp.shalog.O0.sha1
-           tests/test1.inp.stderr.O0.sha1
-           tests/test1.inp.stdout.O0.sha1
            tests/testrunner.inp.sh
            debian/changelog
            debian/control
@@ -43,6 +39,35 @@ Files:     .tarball-version
            debian/tests/control
            debian/tests/test1.inp
            debian/tests/testrunner.inp.sh
+           doc/local.mk
+           doc/permute.info
+           doc/permute.texi
+           doc/version.texi
+           man/permute.x
+           po/LINGUAS
+           po/Makevars
+           po/POTFILES.in
+           po/en.gmo
+           po/en.po
+           po/es.gmo
+           po/es.po
+           po/ms.gmo
+           po/ms.po
+           po/permute.pot
+           src/gettext.h
+           tests/ChecksumFiles.inc
+           tests/test1.shalog.O0.sha1
+           tests/test2.shalog.O0.sha1
+           tests/test3.shalog.O0.sha1
+           tests/test4.shalog.O0.sha1
+           tests/test5.shalog.O0.sha1
+           tests/test6.shalog.O0.sha1
+           tests/test7.shalog.O0.sha1
+           tests/test8.shalog.O0.sha1
+           tests/test9.shalog.O0.sha1
+           tests/test10.shalog.O0.sha1
+           tests/test11.shalog.O0.sha1
+           tests/test12.shalog.O0.sha1
 Copyright:
  2025 John Kuras <w7og@yahoo.com>
 License: dwtfywwi
@@ -74,7 +99,6 @@ License: dwtfywwi
 Files:     Makefile.in
            build-aux/Makefile.in
            build-aux/ar-lib
-           config.h.in
            config.h
            aclocal.m4
            build-aux/compile
@@ -97,6 +121,32 @@ Files:     Makefile.in
            tests/m4/atenv.m4
            tests/package.m4
            tests/Makefile.in
+           ABOUT-NLS
+           build-aux/config.rpath
+           build-aux/mdate-sh
+           build-aux/texinfo.tex
+           config.in
+           doc/stamp-vti
+           m4/gettext.m4
+           m4/host-cpu-c-abi.m4
+           m4/iconv.m4
+           m4/intlmacosx.m4
+           m4/lib-ld.m4
+           m4/lib-link.m4
+           m4/lib-prefix.m4
+           m4/nls.m4
+           m4/po.m4
+           m4/progtest.m4
+           po/Makefile.in.in
+           po/Rules-quot
+           po/boldquot.sed
+           po/en@boldquot.header
+           po/en@quot.header
+           po/insert-header.sin
+           po/insert-header.sin
+           po/quot.sed
+           po/remove-potcdate.sin
+           po/stamp-po
 Copyright: 1992-2022 Free Software Foundation, Inc.
            1994 X Consortium
            2015 David King <amigadave@amigadave.com>
