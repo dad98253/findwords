@@ -7,7 +7,7 @@ See
 [BUGS]
 No known bugs.
 [EXAMPLE]
-A common use for the program is to help with certain word puzzels. The following example will find the
+A common use for the program is to help with certain word puzzles. The following example will find the
 perturbations of the string "FFERO" and then pass the output through a spell checker to generate a list
 of possible English words:
 
